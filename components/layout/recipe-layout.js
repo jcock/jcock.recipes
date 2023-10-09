@@ -3,6 +3,7 @@ import PageHead from '~/components/util/page-head';
 import Jumbotron from '~/components/modules/jumbotron';
 import Section from '~/components/modules/sections/default';
 import Badge from '~/components/modules/badge';
+import Content from '~/components/util/content';
 
 const RecipeLayout = ({
 	children,
@@ -25,20 +26,13 @@ const RecipeLayout = ({
 				</div>
 			</Jumbotron>
 
-			{frontMatter?.ingredients &&
 			<Section
-				id="ingredients"
+				id="recipe"
 				className="container px-4"
 			>
-				{frontMatter.ingredients}
-			</Section>
-			}
-
-			<Section
-				id="instructions"
-				className="container px-4"
-			>
-				{children}
+				<Content>
+					{children}
+				</Content>
 			</Section>
 		</Layout>
 	);
