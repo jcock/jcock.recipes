@@ -2,18 +2,15 @@ const site = require('./data/site.json');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const withNextra = require('nextra')({
-	theme: 'nextra-theme-blog',
-	themeConfig: './theme.config.jsx'
+	// theme: 'nextra-theme-blog',
+	// themeConfig: './theme.config.jsx'
+	theme: './components/layout/recipe-layout.js'
 });
 
 const nextConfig = {
 	reactStrictMode: true,
 	experimental: {
 		scrollRestoration: true
-	},
-	i18n: {
-		locales: ['en-US'],
-		defaultLocale: 'en-US'
 	},
 	webpack(config) {
 		config.plugins.push(new FaviconsWebpackPlugin({
