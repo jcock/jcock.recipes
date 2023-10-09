@@ -1,7 +1,12 @@
 const site = require('./data/site.json');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
-module.exports = {
+const withNextra = require('nextra')({
+	theme: 'nextra-theme-blog',
+	themeConfig: './theme.config.jsx'
+});
+
+const nextConfig = {
 	reactStrictMode: true,
 	experimental: {
 		scrollRestoration: true
@@ -80,3 +85,5 @@ module.exports = {
 		return config;
 	}
 };
+
+module.exports = withNextra(nextConfig);
