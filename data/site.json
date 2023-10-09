@@ -1,0 +1,24 @@
+{
+	"title": "jcock.recipes",
+	"titleShort": "jcock.recipes",
+	"description": "Just a place to store mom's recipes and other favorites.",
+	"author": "@jcock",
+	"url": "https://jcockrecipes.netlify.app",
+	"logo": "favicon.svg",
+	"shareImage": "share.png",
+	"colors": {
+		"progress": "#000",
+		"manifest": {
+			"backgroundColor": "#fff",
+			"themeColor": "#fff",
+			"tileColor": "#000"
+		}
+	},
+	"analytics": {
+		"gtmId": "GOOGLE_TAGMANAGER_ID"
+	},
+	"copyright": {
+		"name": "Jason Cockerham",
+		"url": "https://jcock.rocks"
+	}
+}

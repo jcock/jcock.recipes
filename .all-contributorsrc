@@ -1,0 +1,23 @@
+{
+	"files": [
+		"README.md"
+	],
+	"imageSize": 100,
+	"commit": false,
+	"contributors": [
+		{
+			"login": "jcock",
+			"name": "Jason Cockerham",
+			"avatar_url": "https://avatars.githubusercontent.com/u/6616625?s=60&v=4",
+			"profile": "https://abccreative.com/team/Jason-Cockerham",
+			"contributions": [
+				"code"
+			]
+		}
+	],
+	"contributorsPerLine": 4,
+	"projectName": "jcock.recipes",
+	"projectOwner": "jcock",
+	"repoType": "github",
+	"repoHost": "https://github.com"
+}
