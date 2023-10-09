@@ -3,14 +3,7 @@
 
 # TEAM
 
-	Interactive Director: Scott Bille
-	I.T. Director: Chris Marts @chrismarts
 	UX Designer/Full-Stack Developer: Jason Cockerham @jcock
-	Digital Media Specialist: Stuart Thomas
-
-# THANKS
-
-	Creative Directors, Art Directors, Project Managers @ AB&C
 
 # TECHNOLOGY COLOPHON 📡
 

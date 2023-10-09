@@ -20,24 +20,47 @@ module.exports = {
 				grab: 'grab'
 			},
 			colors: {
+				emerald: {
+					550: '#12f292'
+				},
 				gray: {
-					850: '#141414'
+					75:'#f7f7f9',
+					150:'#e2e3e3',
+					550: '#65676e',
+					650:'#333842',
+					750:'#21252b',
+					850:'#191b21',
+					950: '#0d0e11'
+
+				},
+				pink: {
+					450: '#ed4e6e'
+				},
+				sky: {
+					450: '#2095f0'
 				}
 			},
 			fontFamily: {
-				'sans': ['var(--font-inter)', ...defaultTheme.fontFamily.sans]
+				sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
+				serif: ['var(--font-lora)', ...defaultTheme.fontFamily.serif]
 			},
 			fontSize: {
 				'2xs': '0.65rem',
-				300: 'clamp(0.7rem, 0.66rem + 0.2vw, 0.8rem)',
-				400: 'clamp(0.88rem, 0.83rem + 0.24vw, 1rem)',
-				450: 'clamp(1rem, 1rem + 0.33vw, 1.33rem)',
-				500: 'clamp(1.09rem, 1rem + 0.47vw, 1.33rem)',
-				600: 'clamp(1.37rem, 1.21rem + 0.8vw, 1.78rem)',
-				700: 'clamp(1.71rem, 1.45rem + 1.29vw, 2.37rem)',
-				800: 'clamp(2.14rem, 1.74rem + 1.99vw, 3.16rem)',
-				900: 'clamp(2.67rem, 2.07rem + 3vw, 4.21rem)',
-				1000: 'clamp(3.34rem, 2.45rem + 4.43vw, 5.61rem)'
+				100: 'clamp(0.22rem, calc(0.55rem + -0.35vw), 0.48rem)',
+				200: 'clamp(0.35rem, calc(0.64rem + -0.30vw), 0.58rem)',
+				300: 'clamp(0.57rem, calc(0.73rem + -0.16vw), 0.69rem)',
+				400: 'clamp(0.83rem, calc(0.81rem + 0.12vw), 0.93rem)',
+				500: 'clamp(1.00rem, calc(0.87rem + 0.66vw), 1.50rem)',
+				600: 'clamp(1.20rem, calc(0.88rem + 1.61vw), 2.43rem)',
+				700: 'clamp(1.44rem, calc(0.79rem + 3.27vw), 3.93rem)',
+				800: 'clamp(1.73rem, calc(0.51rem + 6.09vw), 6.35rem)',
+				900: 'clamp(2.07rem, calc(-0.09rem + 10.80vw), 10.28rem)',
+				1000: 'clamp(2.49rem, calc(-1.23rem + 18.61vw), 16.63rem)',
+				1100: 'clamp(2.99rem, calc(-3.31rem + 31.48vw), 26.91rem)',
+				1200: 'clamp(3.58rem, calc(-6.93rem + 52.58vw), 43.55rem)',
+				1300: 'clamp(4.30rem, calc(-13.11rem + 87.05vw), 70.46rem)',
+				1400: 'clamp(5.16rem, calc(-23.48rem + 143.21vw), 114.00rem)',
+				1500: 'clamp(6.19rem, calc(-40.72rem + 234.55vw), 184.45rem)'
 			},
 			keyframes: {
 				slideDown: {
@@ -101,7 +124,12 @@ module.exports = {
 			},
 			zIndex: {
 				'-1': '-1',
-				'1': '1'
+				1: '1',
+				60: '60',
+				70: '70',
+				80: '80',
+				90: '90',
+				9999: '9999'
 			}
 		}
 	},

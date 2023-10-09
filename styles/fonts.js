@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google';
+import { Inter, Lora } from 'next/font/google';
 
 const inter = Inter({
 	subsets: ['latin'],
@@ -6,4 +6,10 @@ const inter = Inter({
 	variable: '--font-inter'
 });
 
-export { inter };
+const lora = Lora({
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-lora'
+});
+
+export { inter, lora };

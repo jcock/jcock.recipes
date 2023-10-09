@@ -1,6 +1,8 @@
 import Script from 'next/script';
 import NextProgress from 'next-progress';
 
+import { inter, lora } from '~/styles/fonts';
+
 import site from '~/data/site.json';
 
 import '~/styles/globals.css';
@@ -30,7 +32,15 @@ const App = ({ Component, pageProps }) => {
 				` }}>
 				</Script>
 			}
-			<Component {...pageProps} />
+			<div
+				className={`
+					relative
+					${inter.variable}
+					${lora.className}
+				`}
+			>
+				<Component {...pageProps} />
+			</div>
 		</>
 	);
 };
