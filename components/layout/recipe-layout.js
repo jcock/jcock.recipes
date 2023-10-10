@@ -6,6 +6,8 @@ import Badge from '~/components/modules/badge';
 import Content from '~/components/util/content';
 import RecipeList from '~/components/modules/navigation/recipe-list';
 
+import imageRecipeDefault from '~/images/recipe-default.jpg';
+
 const RecipeLayout = ({
 	children,
 	pageOpts
@@ -18,7 +20,26 @@ const RecipeLayout = ({
 				title={title}
 			/>
 
-			<Jumbotron>
+			<Jumbotron
+				image={frontMatter?.image ?
+					<Jumbotron.Image
+						image={{
+							src: frontMatter.image,
+							width: 1920,
+							height: 720
+						}}
+					/>
+					: frontMatter?.jumbotron === 'small' ?
+						null
+						:
+						<Jumbotron.Image
+							image={imageRecipeDefault}
+							width={1920}
+							height={720}
+						/>
+				}
+				contentClasses={frontMatter?.jumbotron === 'small' ? 'place-items-center' : null}
+			>
 				<Jumbotron.Title>{title}</Jumbotron.Title>
 				<div>
 					{frontMatter?.type &&
@@ -30,7 +51,7 @@ const RecipeLayout = ({
 			{frontMatter?.showList &&
 				<Section
 					id="recipe-list"
-					className="container px-4"
+					className="container px-4 my-12"
 				>
 					<RecipeList pages={pageMap} />
 				</Section>
@@ -38,7 +59,7 @@ const RecipeLayout = ({
 
 			<Section
 				id="recipe"
-				className="container px-4"
+				className="container px-4 my-12"
 			>
 				<Content>
 					{children}

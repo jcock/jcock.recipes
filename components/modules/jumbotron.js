@@ -10,18 +10,20 @@ const Jumbotron = ({
 	return (
 		<section
 			className={`
-				relative grid grid-cols-1 auto-rows-min md:grid-rows-1 overflow-hidden bg-gray-800 text-white
+				relative grid grid-cols-1 grid-rows-1 overflow-hidden min-h-[20rem] max-h-[50vh] text-white [background-image:radial-gradient(#333842,#0d0e11)]
 				${className ?? ''}
 			`}
 			{...rest}
 		>
 			<div
 				className={`
-					md:row-span-full col-span-full grid place-content-center relative z-10 container p-4
+					row-span-full col-span-full grid items-center relative z-10 container p-4
 					${contentClasses ?? ''}
 				`}
 			>
-				{children}
+				<div>
+					{children}
+				</div>
 			</div>
 
 			{image && image}
@@ -51,7 +53,7 @@ export const JumbotronImage = ({
 	className
 }) => {
 	return (
-		<div className="relative order-first md:order-last row-span-full col-span-full">
+		<div className="relative order-last row-span-full col-span-full">
 			<Image
 				src={image || image.src}
 				width={image.width ? image.width : null}
@@ -59,7 +61,7 @@ export const JumbotronImage = ({
 				alt={alt ?? ''}
 				priority
 				className={`
-					md:col-start-1 h-full w-full object-cover object-center opacity-70 md:opacity-20
+					md:col-start-1 h-full w-full object-cover object-center opacity-20
 					${className ?? ''}
 				`}
 			/>
