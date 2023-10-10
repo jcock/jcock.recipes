@@ -84,9 +84,7 @@ const RecipeLayout = ({
 							</InstructionsCard>
 						</Grid>
 						:
-						<InstructionsCard>
-							{children}
-						</InstructionsCard>
+						children
 					}
 				</Content>
 			</Section>
