@@ -20,6 +20,7 @@ const CardDefault = ({
 	className,
 	hasShadow = true,
 	image,
+	header,
 	body,
 	children,
 	footer,
@@ -30,10 +31,11 @@ const CardDefault = ({
 			className={cardClasses(className, hasShadow)}
 			{...rest}
 		>
-			{image}
+			{image && image}
+			{header && header}
 			{children}
-			{body}
-			{footer}
+			{body && body}
+			{footer && footer}
 		</div>
 	);
 };
@@ -44,6 +46,7 @@ const CardLink = ({
 	className,
 	hasShadow = true,
 	image,
+	header,
 	body,
 	children,
 	footer,
@@ -61,6 +64,7 @@ const CardLink = ({
 			{...rest}
 		>
 			{image && image}
+			{header && header}
 			{children}
 			{body && body}
 			{footer && footer}
@@ -97,6 +101,22 @@ export const CardImage = ({
 	);
 };
 
+export const CardHeader = ({
+	children,
+	className
+}) => {
+	return (
+		<div
+			className={twMerge(
+				'p-4 md:px-5 lg:px-6 bg-gray-150',
+				className ?? ''
+			)}
+		>
+			{children}
+		</div>
+	);
+};
+
 export const CardBody = ({
 	children,
 	className
@@ -114,18 +134,21 @@ export const CardBody = ({
 };
 
 export const CardTitle = ({
+	as = 'h3',
 	children,
 	className
 }) => {
+	const Title = as;
+
 	return (
-		<h3
+		<Title
 			className={twMerge(
 				'text-xs sm:text-sm md:text-base font-bold',
 				className ?? ''
 			)}
 		>
 			{children}
-		</h3>
+		</Title>
 	);
 };
 
@@ -148,6 +171,7 @@ export const CardFooter = ({
 Card.Default = CardDefault;
 Card.Link = CardLink;
 Card.Image = CardImage;
+Card.Header = CardHeader;
 Card.Body = CardBody;
 Card.Title = CardTitle;
 Card.Footer = CardFooter;

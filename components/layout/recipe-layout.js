@@ -5,6 +5,9 @@ import Section from '~/components/modules/sections/default';
 import Badge from '~/components/modules/badge';
 import Content from '~/components/util/content';
 import RecipeList from '~/components/modules/navigation/recipe-list';
+import Grid from '~/components/modules/grid';
+import IngredientsCard from '~/components/modules/cards/ingredients';
+import InstructionsCard from '~/components/modules/cards/instructions';
 
 import imageRecipeDefault from '~/images/recipe-default.jpg';
 
@@ -29,7 +32,7 @@ const RecipeLayout = ({
 							height: 720
 						}}
 					/>
-					: frontMatter?.jumbotron === 'small' ?
+					: frontMatter?.mode === 'page' ?
 						null
 						:
 						<Jumbotron.Image
@@ -38,7 +41,7 @@ const RecipeLayout = ({
 							height={720}
 						/>
 				}
-				contentClasses={frontMatter?.jumbotron === 'small' ? 'place-items-center' : null}
+				contentClasses={frontMatter?.mode === 'page' ? 'place-items-center' : null}
 			>
 				<Jumbotron.Title>{title}</Jumbotron.Title>
 				<div className="mt-4">
@@ -62,7 +65,29 @@ const RecipeLayout = ({
 				className="container px-4 my-12"
 			>
 				<Content>
-					{children}
+					{frontMatter?.mode !== 'page' ?
+						<Grid
+							columns="grid-cols-1 lg:grid-cols-[1fr_1.5fr]"
+							gap="gap-6 lg:gap-8"
+						>
+							{frontMatter?.ingredients &&
+								<IngredientsCard>
+									<ul>
+										{frontMatter.ingredients.map(ingredient => (
+											<li key={ingredient}>{ingredient}</li>
+										))}
+									</ul>
+								</IngredientsCard>
+							}
+							<InstructionsCard>
+								{children}
+							</InstructionsCard>
+						</Grid>
+						:
+						<InstructionsCard>
+							{children}
+						</InstructionsCard>
+					}
 				</Content>
 			</Section>
 		</Layout>

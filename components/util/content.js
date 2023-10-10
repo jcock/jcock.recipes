@@ -11,7 +11,7 @@ const Content = ({
 		<>
 			<Container
 				className={`
-					prose prose-inherit max-w-none
+					prose prose-sm max-w-none
 					${className ?? ''}
 				`}
 			>
