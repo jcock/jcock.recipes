@@ -52,7 +52,7 @@ const CardLink = ({
 			href={href}
 			className={`
 				${cardClasses(className)}
-				group transition hover:shadow-xl hover:border-indigo-300 focus:shadow-xl  focus:border-indigo-300
+				group transition hover:shadow-xl hover:border-sky-450 focus:shadow-xl  focus:border-sky-450
 			`}
 			{...rest}
 		>
@@ -67,10 +67,17 @@ const CardLink = ({
 export const CardImage = ({
 	image,
 	alt,
-	className
+	className,
+	imageClassName,
+	...rest
 }) => {
 	return (
-		<div className="w-full">
+		<div
+			className={`
+				w-full
+				${className ?? ''}
+			`}
+		>
 			<Image
 				src={image || image.src}
 				width={image.width ? image.width : null}
@@ -78,8 +85,9 @@ export const CardImage = ({
 				alt={alt ?? ''}
 				className={`
 					w-full h-auto
-					${className ?? ''}
+					${imageClassName ?? ''}
 				`}
+				{...rest}
 			/>
 		</div>
 	);
@@ -92,7 +100,7 @@ export const CardBody = ({
 	return (
 		<div
 			className={`
-				flex-auto p-4 md:px-6 lg:px-8
+				flex-auto p-4 md:px-6
 				${className ?? ''}
 			`}
 		>
@@ -108,7 +116,7 @@ export const CardTitle = ({
 	return (
 		<h3
 			className={`
-				text-2xl font-bold
+				text-base font-bold
 				${className ?? ''}
 			`}
 		>

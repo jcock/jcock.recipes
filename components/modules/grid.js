@@ -9,7 +9,7 @@ const Grid = forwardRef((props, ref) => {
 		className,
 		autoRows = true,
 		columns = 'md:grid-cols-2',
-		gapClass = 'gap-12 lg:gap-16',
+		gap = 'gap-12 lg:gap-16',
 		...rest
 	} = props;
 
@@ -21,7 +21,7 @@ const Grid = forwardRef((props, ref) => {
 				ref={ref}
 				className={`
 					grid
-					${gapClass}
+					${gap}
 					${autoRows ? 'auto-rows-min' : ''}
 					grid-cols-1
 					${columns}

@@ -4,17 +4,18 @@ import Jumbotron from '~/components/modules/jumbotron';
 import Section from '~/components/modules/sections/default';
 import Badge from '~/components/modules/badge';
 import Content from '~/components/util/content';
+import RecipeList from '~/components/modules/navigation/recipe-list';
 
 const RecipeLayout = ({
 	children,
 	pageOpts
 }) => {
-	const { title, frontMatter } = pageOpts;
+	const { title, frontMatter, pageMap } = pageOpts;
 
 	return (
 		<Layout>
 			<PageHead
-				title={`${title} | Recipes`}
+				title={title}
 			/>
 
 			<Jumbotron>
@@ -25,6 +26,15 @@ const RecipeLayout = ({
 					}
 				</div>
 			</Jumbotron>
+
+			{frontMatter?.showList &&
+				<Section
+					id="recipe-list"
+					className="container px-4"
+				>
+					<RecipeList pages={pageMap} />
+				</Section>
+			}
 
 			<Section
 				id="recipe"

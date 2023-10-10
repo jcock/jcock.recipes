@@ -50,6 +50,7 @@ module.exports = {
 				200: 'clamp(0.35rem, calc(0.64rem + -0.30vw), 0.58rem)',
 				300: 'clamp(0.57rem, calc(0.73rem + -0.16vw), 0.69rem)',
 				400: 'clamp(0.83rem, calc(0.81rem + 0.12vw), 0.93rem)',
+				450: 'clamp(1rem, 1rem + 0.33vw, 1.33rem)',
 				500: 'clamp(1.00rem, calc(0.87rem + 0.66vw), 1.50rem)',
 				600: 'clamp(1.20rem, calc(0.88rem + 1.61vw), 2.43rem)',
 				700: 'clamp(1.44rem, calc(0.79rem + 3.27vw), 3.93rem)',

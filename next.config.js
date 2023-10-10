@@ -12,6 +12,14 @@ const nextConfig = {
 	experimental: {
 		scrollRestoration: true
 	},
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'images.unsplash.com'
+			}
+		]
+	},
 	webpack(config) {
 		config.plugins.push(new FaviconsWebpackPlugin({
 			logo: `public/${site.logo}`,
