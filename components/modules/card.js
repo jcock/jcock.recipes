@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 
 const cardClasses = (className, hasShadow) => twMerge(
-	'relative flex flex-wrap flex-col bg-clip-border break-words bg-white border border-gray-100',hasShadow ? 'shadow-lg' : '',
+	'relative flex flex-wrap flex-col bg-clip-border break-words bg-white border border-gray-100 rounded-md overflow-hidden',
+	hasShadow ? 'shadow-lg' : '',
 	className ?? ''
 );
 
@@ -119,7 +120,7 @@ export const CardTitle = ({
 	return (
 		<h3
 			className={twMerge(
-				'text-base font-bold',
+				'text-xs sm:text-sm md:text-base font-bold',
 				className ?? ''
 			)}
 		>

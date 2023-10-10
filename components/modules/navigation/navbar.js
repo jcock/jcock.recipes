@@ -15,7 +15,7 @@ const Navbar = () => {
 					className="flex gap-2 items-center"
 				>
 					<Icon
-						icon="mdi:robot"
+						icon="icon-park-twotone:chef-hat"
 						size="w-6 h-6"
 					/>
 					<h1 className="text-gray-800 font-bold text-md no-underline">

@@ -12,18 +12,20 @@ const linkDefaultClasses = "normal-case text-inherit !font-[inherit] [font-weigh
 const underlineClasses = "!underline decoration-1 underline-offset-2 hover:!no-underline focus:!no-underline";
 
 const ButtonVariant = {
-	primary: 'bg-blue-600 text-white hover:bg-blue-800 focus:bg-blue-800',
-	secondary: 'bg-pink-600 text-white hover:bg-pink-800 focus:bg-pink-800',
-	link: `${linkDefaultClasses} text-indigo-700 hover:text-indigo-500 focus:text-indigo-500`
+	primary: 'bg-gray-850 text-white hover:bg-gray-650 focus:bg-gray-650',
+	secondary: 'bg-white text-gray-850 hover:bg-gray-150 focus:bg-gray-150',
+	light: 'text-gray-150 hover:text-gray-550 focus:text-gray-550',
+	link: `${linkDefaultClasses} hover:opacity-50 focus:opacity-50`
 };
 
 const ButtonSize = {
-	sm: 'py-1 px-4 text-sm',
+	sq: 'p-2',
+	sm: 'py-1.5 px-4 text-sm',
 	lg: 'py-4 px-10 text-lg'
 };
 
 const ButtonDefaults = {
-	style: 'group font-bold uppercase text-center rounded transition-colors',
+	style: 'group font-bold font-sans uppercase text-center rounded transition-colors',
 	size: 'py-2 px-6',
 	variant: ButtonVariant.primary,
 	block: 'block w-full'
@@ -124,6 +126,27 @@ export const ScrollAnchor = forwardRef((props, ref) => {
 	);
 });
 
+export const Span = ({
+	children,
+	href,
+	className,
+	size,
+	variant,
+	isBlock,
+	hasUnderline,
+	target = '_blank',
+	...rest
+}) => {
+	return (
+		<span
+			className={buttonClasses(variant, size, isBlock, hasUnderline, className)}
+			{...rest}
+		>
+			{children}
+		</span>
+	);
+};
+
 export const Btn = forwardRef((props, ref) => {
 	const {
 		children,
@@ -178,6 +201,7 @@ export const ButtonIcon = ({
 Button.Anchor = Anchor;
 Button.Link = AnchorLink;
 Button.Scroll = ScrollAnchor;
+Button.Span = Span;
 Button.Btn = Btn;
 Button.Body = ButtonBody;
 Button.Icon = ButtonIcon;
