@@ -41,7 +41,7 @@ const RecipeLayout = ({
 				contentClasses={frontMatter?.jumbotron === 'small' ? 'place-items-center' : null}
 			>
 				<Jumbotron.Title>{title}</Jumbotron.Title>
-				<div>
+				<div className="mt-4">
 					{frontMatter?.type &&
 						<Badge>{frontMatter.type}</Badge>
 					}
