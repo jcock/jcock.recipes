@@ -10,7 +10,7 @@ const NavRecipeList = ({
 	return (
 		<Grid
 			columns="grid-cols-2 lg:grid-cols-3"
-			gap="gap-4 lg:gap-6"
+			gap="gap-2 sm:gap-[2px]"
 			className={className ?? ''}
 		>
 			{pages.map(item => (

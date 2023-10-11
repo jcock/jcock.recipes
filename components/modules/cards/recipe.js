@@ -34,7 +34,10 @@ const CardRecipe = ({
 						imageClassName={imageClassName}
 					/>
 			}
-			className={className ?? ''}
+			className={`
+				shadow-lg sm:shadow-none
+				${className ?? ''}
+			`}
 			{...rest}
 		>
 			<Card.Body className="sm:absolute inset-0 sm:text-white sm:grid items-end sm:bg-gradient-to-b from-transparent to-gray-850">
@@ -42,7 +45,11 @@ const CardRecipe = ({
 					<Card.Title className="capitalize transition-transform group-hover:sm:-translate-y-8 group-focus:sm:-translate-y-8">{recipe.frontMatter?.title ? recipe.frontMatter.title : recipe.title}</Card.Title>
 					<div className="sm:absolute bottom-4 lg:bottom-5 inset-x-4 md:inset-x-5 lg:inset-x-6 flex items-center mt-4 sm:opacity-0 transition-opacity delay-100 group-hover:opacity-100 group-focus:opacity-100">
 						{recipe.frontMatter?.type &&
-							<Badge>{recipe.frontMatter.type}</Badge>
+							<Badge
+								variant={recipe.frontMatter.type.toLowerCase()}
+							>
+								{recipe.frontMatter.type}
+							</Badge>
 						}
 						<Button.Span
 							variant="light"

@@ -46,7 +46,11 @@ const RecipeLayout = ({
 				<Jumbotron.Title>{title}</Jumbotron.Title>
 				<div className="mt-4">
 					{frontMatter?.type &&
-						<Badge>{frontMatter.type}</Badge>
+						<Badge
+							variant={frontMatter.type.toLowerCase()}
+						>
+							{frontMatter.type}
+						</Badge>
 					}
 				</div>
 			</Jumbotron>
