@@ -1,5 +1,6 @@
 import { forwardRef, useEffect } from 'react';
 import * as RadixAccordion from '@radix-ui/react-accordion';
+import { twMerge } from 'tailwind-merge';
 
 import Icon from '~/components/modules/icon';
 
@@ -60,17 +61,17 @@ export const AccordionTrigger = forwardRef((
 	<RadixAccordion.Header asChild className="AccordionHeader">
 		<RadixAccordion.Trigger
 			ref={forwardedRef}
-			className={`
-				group flex justify-between w-full p-4 font-bold text-left text-gray-700 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 hover:bg-gray-200 focus:bg-gray-200 transition-colors border-b border-white data-[state=closed]:bg-gray-100 data-[state=open]:bg-gray-200
-				${className ?? ''}
-			`}
+			className={twMerge(
+				'group flex justify-between w-full py-3 px-4 md:px-5 font-bold text-left focus:outline-none focus-visible:ring focus-visible:ring-sky-450 focus-visible:ring-opacity-75 transition-colors data-[state=closed]:bg-gray-100 data-[state=open]:bg-gray-100',
+				className ?? ''
+			)}
 			{...props}
 		>
 			{children}
 			<Icon
 				icon="mdi:chevron-down"
-				size="w-4 h-4"
-				className="transition-transform !transform !translate-y-1 group-data-[state=open]:!rotate-180"
+				size="w-5 h-5"
+				className="transition-transform group-data-[state=open]:!rotate-180"
 				aria-hidden="true"
 			/>
 		</RadixAccordion.Trigger>
@@ -81,19 +82,27 @@ export const AccordionContent = forwardRef((
 	{
 		children,
 		className,
+		contentClassName,
 		...props
 	},
 	forwardedRef
 ) => (
 	<RadixAccordion.Content
 		ref={forwardedRef}
-		className={`
-			border border-gray-200 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden
-			${className ?? ''}
-		`}
+		className={twMerge(
+			'data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden',
+			className ?? ''
+		)}
 		{...props}
 	>
-		<div className="p-4">{children}</div>
+		<div
+			className={twMerge(
+				'p-4',
+				contentClassName ?? ''
+			)}
+		>
+			{children}
+		</div>
 	</RadixAccordion.Content>
 ));
 
