@@ -40,26 +40,27 @@ const CardRecipe = ({
 			`}
 			{...rest}
 		>
-			<Card.Body className="sm:absolute inset-0 sm:text-white sm:grid items-end sm:bg-gradient-to-b from-transparent to-gray-850">
-				<div>
-					<Card.Title className="capitalize transition-transform group-hover:sm:-translate-y-8 group-focus:sm:-translate-y-8">{recipe.frontMatter?.title ? recipe.frontMatter.title : recipe.title}</Card.Title>
-					<div className="sm:absolute bottom-4 lg:bottom-5 inset-x-4 md:inset-x-5 lg:inset-x-6 flex items-center mt-4 sm:opacity-0 transition-opacity delay-100 group-hover:opacity-100 group-focus:opacity-100">
-						{recipe.frontMatter?.type &&
-							<Badge
-								variant={recipe.frontMatter.type.toLowerCase()}
-							>
-								{recipe.frontMatter.type}
-							</Badge>
-						}
-						<Button.Span
-							variant="light"
-							size="sq"
-							className="p-0 ml-auto"
+			<Card.Body className="sm:absolute inset-0 sm:text-white/90 sm:grid items-stretch sm:bg-gradient-to-b from-transparent to-gray-850">
+				<div className="flex flex-row sm:flex-col justify-between items-start">
+					<Card.Title className="capitalize transition border-b sm:border-b-0 border-transparent group-hover:border-black/20 group-hover:sm:-translate-y-8 group-focus:border-black/20 group-focus:sm:-translate-y-8">{recipe.frontMatter?.title ? recipe.frontMatter.title : recipe.title}</Card.Title>
+
+					<Button.Span
+						variant="light"
+						size="sq"
+						className="order-last sm:absolute bottom-4 lg:bottom-5 left-4 md:left-5 lg:left-6 flex items-center ml-auto sm:ml-0 p-0 sm:opacity-0 text-black/20 sm:text-white/80 transition delay-100 group-hover:opacity-100 group-hover:text-black/30 group-hover:sm:text-white/80 group-focus:opacity-100 group-focus:text-black/30 group-focus:sm:text-white/80"
+					>
+						<Button.Icon icon="mdi:arrow-right" />
+						<span className="sr-only">View recipe</span>
+					</Button.Span>
+
+					{recipe.frontMatter?.type &&
+						<Badge
+							variant={recipe.frontMatter.type.toLowerCase()}
+							className="order-2 sm:order-first absolute sm:static top-4 left-4"
 						>
-							<Button.Icon icon="mdi:arrow-right" />
-							<span className="sr-only">View recipe</span>
-						</Button.Span>
-					</div>
+							{recipe.frontMatter.type}
+						</Badge>
+					}
 				</div>
 			</Card.Body>
 		</Card.Link>

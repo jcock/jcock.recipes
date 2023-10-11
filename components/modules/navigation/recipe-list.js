@@ -5,12 +5,10 @@ const NavRecipeList = ({
 	pages,
 	className
 }) => {
-	const imageClassName = 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-focus:scale-110';
-
 	return (
 		<Grid
 			columns="grid-cols-2 lg:grid-cols-3"
-			gap="gap-2 sm:gap-[2px]"
+			gap="gap-x-2 gap-y-4 sm:gap-[2px]"
 			className={className ?? ''}
 		>
 			{pages.map(item => (

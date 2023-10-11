@@ -82,7 +82,7 @@ export const CardImage = ({
 	return (
 		<div
 			className={twMerge(
-				'w-full',
+				'w-full overflow-hidden',
 				className ?? ''
 			)}
 		>
