@@ -15,7 +15,7 @@ const RootLayout = ({
 	return (
 		<div
 			id="top"
-			className="relative"
+			className="relative flex flex-col min-h-screen"
 		>
 			<Provider>
 				<SectionContext.Provider

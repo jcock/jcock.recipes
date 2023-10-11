@@ -1,34 +1,32 @@
-import * as Scroll from 'react-scroll';
-
-import Icon from '~/components/modules/icon';
+import Button from '~/components/modules/button';
 
 import site from '~/data/site.json';
 
-const Footer = () => {
-	let ScrollLink = Scroll.Link;
-
+const Footer = ({ className }) => {
 	return (
-		<footer className="px-4 py-1 bg-slate-100 text-gray-700 text-center text-xs">
+		<footer
+			className={`
+				mt-auto px-4 py-3 bg-black/5 text-center text-xs
+				${className ?? ''}
+			`}
+		>
 			<div className="container flex justify-between items-center">
 				<p className="m-0">
-					© {new Date().getFullYear()}. <a href={`${site.copyright.url}`} target="_blank">{site.copyright.name}</a>
+					© {new Date().getFullYear()}. <Button.Anchor href={`${site.copyright.url}`} variant="link" hasUnderline>{site.copyright.name}</Button.Anchor>
 				</p>
 
 				<div className="flex">
-					<ScrollLink
-						className="px-4 py-5 transition-colors hover:text-gray-900 focus:text-gray-900"
-						href="#top"
-						to="top"
-						smooth={true}
-						offset={-25}
-						duration={250}
+					<Button.Scroll
+						href="top"
+						variant="none"
+						size="sq"
 					>
 						<span className="sr-only">To the top!</span>
-						<Icon
+						<Button.Icon
 							icon="mdi:arrow-collapse-up"
 							size="w-4 h-4"
 						/>
-					</ScrollLink>
+					</Button.Scroll>
 				</div>
 			</div>
 		</footer>

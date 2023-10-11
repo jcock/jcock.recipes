@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 
 const cardClasses = (className, hasShadow) => twMerge(
-	'relative flex flex-wrap flex-col bg-clip-border break-words bg-white overflow-hidden',
+	'relative flex flex-wrap flex-col bg-clip-border break-words bg-white/80 overflow-hidden border border-black/10 lg:border-black/5',
 	hasShadow ? 'shadow-lg' : '',
 	className ?? ''
 );
@@ -108,7 +108,7 @@ export const CardHeader = ({
 	return (
 		<div
 			className={twMerge(
-				'p-4 md:px-5 lg:px-6 bg-gray-150',
+				'py-3 px-4 md:px-5 lg:px-6 bg-gray-100',
 				className ?? ''
 			)}
 		>

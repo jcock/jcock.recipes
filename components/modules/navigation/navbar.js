@@ -8,7 +8,7 @@ import site from '~/data/site.json';
 
 const Navbar = () => {
 	return (
-		<div className="px-4 transition-all bg-white border-b border-gray-400/20">
+		<div className="px-4 transition-all bg-gray-50 border-b border-gray-400/20">
 			<div className="flex flex-wrap items-center justify-between py-2 px-6 container transition-all">
 				<Link
 					href="/"

@@ -6,7 +6,7 @@ const CardIngredients = ({
 	return (
 		<Card.Default
 			hasShadow={false}
-			className="bg-gray-75"
+			className="bg-transparent"
 		>
 			<Card.Header>
 				<Card.Title

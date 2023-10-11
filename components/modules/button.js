@@ -12,6 +12,7 @@ const linkDefaultClasses = "normal-case text-inherit !font-[inherit] [font-weigh
 const underlineClasses = "!underline decoration-1 underline-offset-2 hover:!no-underline focus:!no-underline";
 
 const ButtonVariant = {
+	none: '',
 	primary: 'bg-gray-850 text-white hover:bg-gray-650 focus:bg-gray-650',
 	secondary: 'bg-white text-gray-850 hover:bg-gray-150 focus:bg-gray-150',
 	light: 'text-gray-150 hover:text-gray-550 focus:text-gray-550',
@@ -25,7 +26,7 @@ const ButtonSize = {
 };
 
 const ButtonDefaults = {
-	style: 'group font-bold font-sans uppercase text-center rounded transition-colors',
+	style: 'group font-bold font-sans uppercase text-center rounded transition',
 	size: 'py-2 px-6',
 	variant: ButtonVariant.primary,
 	block: 'block w-full'

@@ -10,7 +10,7 @@ const Jumbotron = ({
 	return (
 		<section
 			className={`
-				relative grid grid-cols-1 grid-rows-1 overflow-hidden min-h-[20rem] max-h-[50vh] text-white [background-image:radial-gradient(#333842,#0d0e11)]
+				relative grid grid-cols-1 grid-rows-1 overflow-hidden min-h-[12rem] max-h-[33vh] text-white [background-image:radial-gradient(#333842,#0d0e11)]
 				${className ?? ''}
 			`}
 			{...rest}
