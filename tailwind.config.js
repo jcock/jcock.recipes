@@ -76,47 +76,29 @@ module.exports = {
 			typography: {
 				DEFAULT: {
 					css: {
-						video: {
-							'margin-bottom': 0,
-							'margin-top': 0
+						ul: {
+							'margin-bottom': '0.1rem',
+							'margin-top': '0.5rem',
+							'& > li': {
+								'margin-bottom': '0.5rem',
+								'margin-top': '0.5rem'
+							}
+						},
+						ol: {
+							'& > li': {
+								'margin-bottom': '0.5rem',
+								'margin-top': '0.5rem'
+							}
 						}
 					}
 				},
 				'sm': {
 					css: {
-						video: {
+						ul: {
 							'margin-bottom': 0,
 							'margin-top': 0
-						}
-					}
-				},
-				'md': {
-					css: {
-						video: {
-							'margin-bottom': 0,
-							'margin-top': 0
-						}
-					}
-				},
-				'lg': {
-					css: {
-						video: {
-							'margin-bottom': 0,
-							'margin-top': 0
-						}
-					}
-				},
-				'xl': {
-					css: {
-						video: {
-							'margin-bottom': 0,
-							'margin-top': 0
-						}
-					}
-				},
-				'2xl': {
-					css: {
-						video: {
+						},
+						ol: {
 							'margin-bottom': 0,
 							'margin-top': 0
 						}
