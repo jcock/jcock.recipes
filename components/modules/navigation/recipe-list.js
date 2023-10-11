@@ -1,8 +1,6 @@
 import RecipeCard from '~/components/modules/cards/recipe';
 import Grid from '~/components/modules/grid';
 
-import imageRecipeDefault from '~/images/recipe-default.jpg';
-
 const NavRecipeList = ({
 	pages,
 	className
