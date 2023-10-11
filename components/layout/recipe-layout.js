@@ -41,19 +41,32 @@ const RecipeLayout = ({
 							height={720}
 						/>
 				}
-				contentClasses={frontMatter?.mode === 'page' ? 'place-items-center' : null}
+				contentClasses={frontMatter?.mode === 'page' ? 'place-content-center' : null}
 			>
 				<Jumbotron.Title>{title}</Jumbotron.Title>
-				<div className="mt-4">
-					{frontMatter?.type &&
-						<Badge
-							variant={frontMatter.type.toLowerCase()}
-						>
-							{frontMatter.type}
-						</Badge>
-					}
-				</div>
 			</Jumbotron>
+
+			{(frontMatter?.type || frontMatter?.time) &&
+				<Section
+					id="recipe-list"
+					className="container px-4 -translate-y-7"
+				>
+					<div className="flex items-center justify-between gap-4 px-4 md:px-6 py-4 bg-sky-200 text-black/70 shadow-lg">
+						{frontMatter.type &&
+							<Badge
+								variant={frontMatter.type.toLowerCase()}
+							>
+								{frontMatter.type}
+							</Badge>
+						}
+						{frontMatter.time &&
+							<p className="text-sm font-sans font-semibold">
+								{frontMatter.time}
+							</p>
+						}
+					</div>
+				</Section>
+			}
 
 			{frontMatter?.showList &&
 				<Section
@@ -66,7 +79,7 @@ const RecipeLayout = ({
 
 			<Section
 				id="recipe"
-				className="container px-4 my-12"
+				className="container px-4 mb-12"
 			>
 				<Content>
 					{frontMatter?.mode !== 'page' ?
