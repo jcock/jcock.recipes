@@ -40,7 +40,7 @@ const CardRecipe = ({
 			`}
 			{...rest}
 		>
-			<Card.Body className="sm:absolute inset-0 sm:text-white/90 sm:grid items-stretch sm:bg-gradient-to-b from-transparent to-gray-850">
+			<Card.Body className="sm:absolute inset-0 sm:text-white/90 sm:grid items-stretch sm:bg-gradient-to-b from-gray-850 via-transparent to-gray-850">
 				<div className="flex flex-row sm:flex-col justify-between items-start">
 					<Card.Title className="capitalize transition border-b sm:border-b-0 border-transparent group-hover:border-black/20 group-hover:sm:-translate-y-8 group-focus:border-black/20 group-focus:sm:-translate-y-8">{recipe.frontMatter?.title ? recipe.frontMatter.title : recipe.title}</Card.Title>
 
@@ -53,13 +53,22 @@ const CardRecipe = ({
 						<span className="sr-only">View recipe</span>
 					</Button.Span>
 
-					{recipe.frontMatter?.type &&
-						<Badge
-							variant={recipe.frontMatter.type.toLowerCase()}
-							className="order-2 sm:order-first absolute sm:static top-4 left-4"
-						>
-							{recipe.frontMatter.type}
-						</Badge>
+					{(recipe.frontMatter?.type || recipe.frontMatter?.time) &&
+						<div className="order-2 sm:order-first flex items-center justify-between gap-4  absolute sm:static top-0 inset-x-0 p-4 sm:p-0 sm:w-full text-white bg-gradient-to-b from-gray-850 sm:from-transparent to-transparent">
+							{recipe.frontMatter.type &&
+								<Badge
+									variant={recipe.frontMatter.type.toLowerCase()}
+								>
+									{recipe.frontMatter.type}
+								</Badge>
+							}
+
+							{recipe.frontMatter.time &&
+								<p className="text-2xs font-sans font-semibold">
+									{recipe.frontMatter.time}
+								</p>
+							}
+						</div>
 					}
 				</div>
 			</Card.Body>
