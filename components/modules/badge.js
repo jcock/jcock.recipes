@@ -1,4 +1,4 @@
-import RecipeTypes from 'data/recipe-types';
+import RecipeTypes from '~/data/recipe-types';
 
 const Badge = ({
 	variant = 'misc',
