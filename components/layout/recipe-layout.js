@@ -59,10 +59,19 @@ const RecipeLayout = ({
 								{frontMatter.type}
 							</Badge>
 						}
-						{frontMatter.time &&
-							<p className="text-sm font-sans font-semibold">
-								{frontMatter.time}
-							</p>
+						{(frontMatter.time || frontMatter.servings) &&
+							<ul className="flex items-center gap-4 divide-x-2 divide-black/10 text-black/70 text-sm font-sans font-semibold">
+								{frontMatter.time &&
+									<li>
+										{frontMatter.time}
+									</li>
+								}
+								{frontMatter.servings &&
+									<li className="pl-4">
+										{frontMatter.servings} servings
+									</li>
+								}
+							</ul>
 						}
 					</div>
 				</Section>

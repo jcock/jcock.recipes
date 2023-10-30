@@ -54,7 +54,7 @@ const CardRecipe = ({
 					</Button.Span>
 
 					{(recipe.frontMatter?.type || recipe.frontMatter?.time) &&
-						<div className="order-2 sm:order-first flex items-center justify-between gap-4  absolute sm:static top-0 inset-x-0 p-4 sm:p-0 sm:w-full text-white bg-gradient-to-b from-gray-850 sm:from-transparent to-transparent">
+						<div className="order-2 sm:order-first flex items-start justify-between gap-4  absolute sm:static top-0 inset-x-0 p-4 sm:p-0 sm:w-full text-white bg-gradient-to-b from-gray-850 sm:from-transparent to-transparent">
 							{recipe.frontMatter.type &&
 								<Badge
 									variant={recipe.frontMatter.type.toLowerCase()}
@@ -63,10 +63,19 @@ const CardRecipe = ({
 								</Badge>
 							}
 
-							{recipe.frontMatter.time &&
-								<p className="text-2xs font-sans font-semibold">
-									{recipe.frontMatter.time}
-								</p>
+							{(recipe.frontMatter.time || recipe.frontMatter.servings) &&
+								<ul className="flex flex-col items-end gap-1 text-2xs font-sans font-semibold">
+									{recipe.frontMatter.time &&
+										<li>
+											{recipe.frontMatter.time}
+										</li>
+									}
+									{recipe.frontMatter.servings &&
+										<li className="pl-2">
+											{recipe.frontMatter.servings} servings
+										</li>
+									}
+								</ul>
 							}
 						</div>
 					}

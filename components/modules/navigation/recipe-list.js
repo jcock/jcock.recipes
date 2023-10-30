@@ -12,7 +12,7 @@ const NavRecipeList = ({
 			className={className ?? ''}
 		>
 			{pages.map(item => (
-				(item.kind === 'MdxPage' && item.frontMatter.hideInMenu !== true) &&
+				(item.kind === 'MdxPage' && item.frontMatter?.hideInMenu !== true) &&
 				<RecipeCard
 					key={item.name}
 					recipe={item}
