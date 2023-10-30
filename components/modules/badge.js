@@ -1,14 +1,7 @@
-const BadgeVariant = {
-	dessert: 'bg-pink-400/80',
-	drink: 'bg-orange-400/80',
-	meal: 'bg-blue-400/80',
-	misc: 'bg-gray-500/80',
-	side: 'bg-purple-400/80',
-	snack: 'bg-yellow-400/80'
-};
+import RecipeTypes from 'data/recipe-types';
 
 const Badge = ({
-	variant,
+	variant = 'misc',
 	className,
 	children
 }) => {
@@ -16,7 +9,7 @@ const Badge = ({
 		<span
 			className={`
 				inline-flex items-center rounded-sm px-2 py-0.5 text-2xs font-sans text-white/80
-				${variant ? BadgeVariant[variant] : BadgeVariant['misc']}
+				${RecipeTypes.find(type => type.id === variant).color}
 				${className ?? ''}
 			`}
 		>
