@@ -72,7 +72,7 @@ const CardRecipe = ({
 									}
 									{recipe.frontMatter.servings &&
 										<li className="pl-2">
-											{recipe.frontMatter.servings} servings
+											{recipe.frontMatter.servings}
 										</li>
 									}
 								</ul>

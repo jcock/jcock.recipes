@@ -68,7 +68,7 @@ const RecipeLayout = ({
 								}
 								{frontMatter.servings &&
 									<li className="pl-4">
-										{frontMatter.servings} servings
+										{frontMatter.servings}
 									</li>
 								}
 							</ul>
