@@ -56,7 +56,7 @@ const NavRecipeList = ({
 								translateY: '20%'
 							}}
 							transition={{
-								type: 'linear',
+								ease: 'easeInOut',
 								duration: 0.2
 							}}
 						/>
