@@ -40,9 +40,21 @@ const NavRecipeList = ({
 						<MotionCard
 							key={item.name}
 							recipe={item}
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
+							initial={{
+								opacity: 0,
+								scale: 0.85,
+								translateY: '20%'
+							}}
+							animate={{
+								opacity: 1,
+								scale: 1,
+								translateY: 0
+							}}
+							exit={{
+								opacity: 0,
+								scale: 0.85,
+								translateY: '20%'
+							}}
 							transition={{
 								type: 'linear',
 								duration: 0.2
