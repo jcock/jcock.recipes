@@ -2,6 +2,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
+import Badge from '~/components/modules/badge';
+
 import RecipeTypes from 'data/recipe-types';
 
 let validationSchema = Yup.object().shape({
@@ -33,11 +35,13 @@ const FormRecipeFilter = ({
 		<form className={className ?? ''}>
 			<nav className="flex flex-wrap items-center gap-2">
 				{RecipeTypes.map(item => (
-					<label
+					<Badge
 						key={item.id}
+						as="label"
 						className={`
-							cursor-pointer relative inline-flex items-center rounded-sm px-2 py-0.5 text-xs font-sans border
-							${filteredValue.id === item.id ? RecipeTypes.find(type => type.id === item.id).selected : `text-white/80 border-transparent ${RecipeTypes.find(type => type.id === item.id).color}`}
+							cursor-pointer text-xs border
+							${filteredValue.id === item.id ? `${RecipeTypes.find(type => type.id === item.id).selected} bg-transparent` : `text-white/80 border-transparent ${RecipeTypes.find(type => type.id === item.id).color}`}
+							transition hover:opacity-80 focus:opacity-80
 						`}
 					>
 						<input
@@ -48,7 +52,7 @@ const FormRecipeFilter = ({
 							onChange={() => updateFilter(item)}
 						/>
 						{item.name}
-					</label>
+					</Badge>
 				))}
 			</nav>
 		</form>
