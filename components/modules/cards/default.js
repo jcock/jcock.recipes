@@ -1,3 +1,5 @@
+import { forwardRef } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
@@ -16,18 +18,20 @@ const Card = ({
 	);
 };
 
-const CardDefault = ({
-	className,
-	hasShadow = true,
-	image,
-	header,
-	body,
-	children,
-	footer,
-	...rest
-}) => {
+const CardDefault = forwardRef((props, ref) => {
+	const {
+		className,
+		hasShadow = true,
+		image,
+		header,
+		body,
+		children,
+		footer,
+		...rest
+	} = props;
 	return (
 		<div
+			ref={ref}
 			className={cardClasses(className, hasShadow)}
 			{...rest}
 		>
@@ -38,24 +42,27 @@ const CardDefault = ({
 			{footer && footer}
 		</div>
 	);
-};
+});
 
-const CardLink = ({
-	as = 'link',
-	href,
-	className,
-	hasShadow = true,
-	image,
-	header,
-	body,
-	children,
-	footer,
-	...rest
-}) => {
+const CardLink = forwardRef((props, ref) => {
+	const {
+		as = 'link',
+		href,
+		className,
+		hasShadow = true,
+		image,
+		header,
+		body,
+		children,
+		footer,
+		...rest
+	} = props;
+
 	const Container = as === 'link' ? Link : as;
 
 	return (
 		<Container
+			ref={ref}
 			href={href}
 			className={twMerge(
 				cardClasses(className, hasShadow),
@@ -70,7 +77,7 @@ const CardLink = ({
 			{footer && footer}
 		</Container>
 	);
-};
+});
 
 export const CardImage = ({
 	image,
@@ -175,5 +182,8 @@ Card.Header = CardHeader;
 Card.Body = CardBody;
 Card.Title = CardTitle;
 Card.Footer = CardFooter;
+
+CardDefault.displayName = 'Card:Default';
+CardLink.displayName = 'Card:Link';
 
 export default Card;

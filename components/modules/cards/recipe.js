@@ -1,18 +1,23 @@
+import { forwardRef } from 'react';
+
 import Card from '~/components/modules/cards/default';
 import Badge from '~/components/modules/badge';
 import Button from '~/components/modules/button';
 
 import imageRecipeDefault from '~/images/recipe-default.jpg';
 
-const CardRecipe = ({
-	recipe,
-	className,
-	...rest
-}) => {
+const CardRecipe = forwardRef((props, ref) => {
+	const {
+		recipe,
+		className,
+		...rest
+	} = props;
+
 	const imageClassName = 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-focus:scale-110';
 
 	return (
 		<Card.Link
+			ref={ref}
 			href={recipe.route}
 			image={
 				recipe.frontMatter?.image ?
@@ -83,6 +88,8 @@ const CardRecipe = ({
 			</Card.Body>
 		</Card.Link>
 	);
-};
+});
+
+CardRecipe.displayName = 'Card:Recipe';
 
 export default CardRecipe;
