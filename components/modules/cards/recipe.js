@@ -35,7 +35,7 @@ const CardRecipe = forwardRef((props, ref) => {
 						image={imageRecipeDefault}
 						width={640}
 						height={480}
-						className="aspect-w-16 aspect-h-9"
+						className="aspect-w-4 aspect-h-3"
 						imageClassName={imageClassName}
 					/>
 			}
