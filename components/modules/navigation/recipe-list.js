@@ -22,7 +22,6 @@ const NavRecipeList = ({
 			<FilterRecipeForm
 				setFilter={setFilter}
 				filteredValue={filter}
-				className="mb-4"
 			/>
 
 			<Grid
