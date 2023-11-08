@@ -17,13 +17,17 @@ const NavRecipeList = ({
 
 	const items = filter.id !== 'all' ? pages.filter(page => page.frontMatter?.type === filter.id) : pages;
 
+	const updateFilter = item => {
+		setFilter(item);
+	};
+
 	const MotionRecipeCard = motion(RecipeCard);
 	const MotionCard = motion(Card.Default);
 
 	return (
 		<div>
 			<FilterRecipeForm
-				setFilter={setFilter}
+				updateFilter={updateFilter}
 				filteredValue={filter}
 			/>
 

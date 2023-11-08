@@ -9,14 +9,10 @@ import Icon from '~/components/modules/icon';
 import RecipeTypes from 'data/recipe-types';
 
 const FormRecipeFilter = ({
-	setFilter,
 	filteredValue,
+	updateFilter,
 	className
 }) => {
-	const updateFilter = item => {
-		setFilter(item);
-	};
-
 	return (
 		<div
 			className={`
