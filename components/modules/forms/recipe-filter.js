@@ -81,7 +81,7 @@ const SelectItem = forwardRef((
 			ref={forwardedRef}
 			value={item.id}
 			className={twMerge(
-				'group flex items-center py-1.5 px-3 relative select-none text-xs leading-none rounded-sm cursor-pointer data-[disabled]:text-gray-550 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:text-white data-[state=checked]:text-white',
+				'group flex items-center py-3 sm:py-1.5 px-3 relative select-none text-xs leading-none rounded-sm cursor-pointer data-[disabled]:text-gray-550 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:text-white data-[state=checked]:text-white',
 				item.color.selected.background,
 				item.color.hover,
 				className ?? ''
