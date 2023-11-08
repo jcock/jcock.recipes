@@ -74,6 +74,7 @@ const NavRecipeList = ({
 				columns="grid-cols-2 lg:grid-cols-3"
 				gap="gap-x-2 gap-y-4 sm:gap-[2px]"
 				className={className ?? ''}
+				noAnimation
 			>
 				<AnimatePresence mode="popLayout">
 					{items.map(item => (

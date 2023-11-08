@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 import SlideIn from '~/components/modules/animations/slidein';
 
@@ -10,28 +11,45 @@ const Grid = forwardRef((props, ref) => {
 		autoRows = true,
 		columns = 'md:grid-cols-2',
 		gap = 'gap-12 lg:gap-16',
+		noAnimation,
 		...rest
 	} = props;
 
 	const Container = as;
 
 	return (
-		<SlideIn>
+		noAnimation ?
 			<Container
 				ref={ref}
-				className={`
-					grid
-					${gap}
-					${autoRows ? 'auto-rows-min' : ''}
-					grid-cols-1
-					${columns}
-					${className ?? ''}
-				`}
+				className={twMerge(
+					'grid',
+					gap,
+					autoRows ? 'auto-rows-min' : '',
+					'grid-cols-1',
+					columns,
+					className ?? ''
+				)}
 				{...rest}
 			>
 				{children}
 			</Container>
-		</SlideIn>
+			:
+			<SlideIn>
+				<Container
+					ref={ref}
+					className={twMerge(
+						'grid',
+						gap,
+						autoRows ? 'auto-rows-min' : '',
+						'grid-cols-1',
+						columns,
+						className ?? ''
+					)}
+					{...rest}
+				>
+					{children}
+				</Container>
+			</SlideIn>
 	);
 });
 
