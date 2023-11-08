@@ -2,44 +2,86 @@ const RecipeTypes = [
 	{
 		id: 'all',
 		name: 'All',
-		color: 'bg-gray-900/80',
-		selected: 'border-gray-900 text-gray-900'
+		color: {
+			background: 'bg-gray-900',
+			hover: 'data-[highlighted]:bg-gray-900',
+			selected: {
+				color: 'text-gray-900',
+				background: 'data-[state=checked]:bg-gray-900'
+			}
+		}
 	},
 	{
 		id: 'dessert',
 		name: 'Dessert',
-		color: 'bg-pink-400/80',
-		selected: 'border-pink-400 text-pink-400'
+		color: {
+			background: 'bg-pink-400',
+			hover: 'data-[highlighted]:bg-pink-400',
+			selected: {
+				color:  'text-pink-400',
+				background: 'data-[state=checked]:bg-pink-400'
+			}
+		}
 	},
 	{
 		id: 'drink',
 		name: 'Drink',
-		color: 'bg-orange-400/80',
-		selected: 'border-orange-400 text-orange-400'
+		color: {
+			background: 'bg-orange-400',
+			hover: 'data-[highlighted]:bg-orange-400',
+			selected: {
+				color:  'text-orange-400',
+				background: 'data-[state=checked]:bg-orange-400'
+			}
+		}
 	},
 	{
 		id: 'meal',
 		name: 'Meal',
-		color: 'bg-blue-400/80',
-		selected: 'border-blue-400 text-blue-400'
+		color: {
+			background: 'bg-blue-400',
+			hover: 'data-[highlighted]:bg-blue-400',
+			selected: {
+				color:  'text-blue-400',
+				background: 'data-[state=checked]:bg-blue-400'
+			}
+		}
 	},
 	{
 		id: 'misc',
 		name: 'Misc',
-		color: 'bg-gray-500/80',
-		selected: 'border-gray-500 text-gray-500'
+		color: {
+			background: 'bg-gray-500',
+			hover: 'data-[highlighted]:bg-gray-500',
+			selected: {
+				color:  'text-gray-500',
+				background: 'data-[state=checked]:bg-gray-500'
+			}
+		}
 	},
 	{
 		id: 'side',
 		name: 'Side',
-		color: 'bg-purple-400/80',
-		selected: 'border-purple-400 text-purple-400'
+		color: {
+			background: 'bg-purple-400',
+			hover: 'data-[highlighted]:bg-purple-400',
+			selected: {
+				color:  'text-purple-400',
+				background: 'data-[state=checked]:bg-purple-400'
+			}
+		}
 	},
 	{
 		id: 'snack',
 		name: 'Snack',
-		color: 'bg-yellow-400/80',
-		selected: 'border-yellow-400 text-yellow-400'
+		color: {
+			background: 'bg-yellow-400',
+			hover: 'data-[highlighted]:bg-yellow-400',
+			selected: {
+				color:  'text-yellow-400',
+				background: 'data-[state=checked]:bg-yellow-400'
+			}
+		}
 	}
 ];
 

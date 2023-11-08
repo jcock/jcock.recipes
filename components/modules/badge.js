@@ -15,7 +15,7 @@ const Badge = ({
 		<Container
 			className={twMerge(
 				'inline-flex items-center rounded-sm px-2 py-0.5 text-2xs font-sans text-white/80',
-				RecipeTypes.find(type => type.id === variant).color,
+				RecipeTypes.find(type => type.id === variant).color.background,
 				className ?? ''
 			)}
 			{...rest}
