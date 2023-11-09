@@ -24,7 +24,8 @@ const RecipeLayout = ({
 			/>
 
 			<Jumbotron
-				image={frontMatter?.image ?
+				mode={frontMatter?.mode}
+				image={frontMatter?.image &&
 					<Jumbotron.Image
 						image={{
 							src: frontMatter.image,
@@ -32,14 +33,6 @@ const RecipeLayout = ({
 							height: 720
 						}}
 					/>
-					: frontMatter?.mode === 'page' ?
-						null
-						:
-						<Jumbotron.Image
-							image={imageRecipeDefault}
-							width={1920}
-							height={720}
-						/>
 				}
 				contentClasses={frontMatter?.mode === 'page' ? 'place-content-center' : null}
 			>
