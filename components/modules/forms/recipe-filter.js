@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
 import * as Select from '@radix-ui/react-select';
 import { twMerge } from 'tailwind-merge';
 
@@ -13,6 +13,8 @@ const FormRecipeFilter = ({
 	updateFilter,
 	className
 }) => {
+	const [filterIsOpen, setFilterIsOpen] = useState(false);
+
 	return (
 		<div
 			className={`
@@ -22,12 +24,13 @@ const FormRecipeFilter = ({
 		>
 			<form>
 				<Select.Root
+					onOpenChange={setFilterIsOpen}
 					defaultValue={filteredValue.id}
 					onValueChange={e => updateFilter(RecipeTypes.find(item => item.id === e))}
 				>
 					<Select.Trigger
 						className={`
-							flex items-center justify-between gap-2 w-full sm:w-auto min-w-[6rem] rounded-sm px-3 py-2 text-xs leading-none font-sans bg-opacity-10 border border-black/10 transition hover:bg-opacity-80 hover:text-white focus:bg-opacity-80 focus:text-white focus:shadow-[0_0_0_1px] focus:shadow-black/50 outline-none
+							relative z-10 flex items-center justify-between gap-2 w-full sm:w-auto min-w-[6rem] rounded-sm px-3 py-2 text-xs leading-none font-sans bg-opacity-10 border border-black/10 transition hover:bg-opacity-80 hover:text-white focus:bg-opacity-80 focus:text-white focus:shadow-[0_0_0_1px] focus:shadow-black/50 outline-none
 							${filteredValue.color.selected.color}
 							${filteredValue.color.background}
 						`}
@@ -44,7 +47,7 @@ const FormRecipeFilter = ({
 						<Select.Content
 							className={`
 								${inter.variable}
-								font-sans overflow-hidden bg-white rounded-sm shadow-md
+								relative z-10 font-sans overflow-hidden bg-white rounded-sm shadow-md
 							`}
 						>
 							<Select.Viewport className="p-1 space-y-px">
@@ -59,6 +62,13 @@ const FormRecipeFilter = ({
 					</Select.Portal>
 				</Select.Root>
 			</form>
+			<i
+				className={`
+					fixed inset-0 z-1 transition
+					${filterIsOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
+				`}
+				aria-hidden="true"
+			/>
 		</div>
 	);
 };
