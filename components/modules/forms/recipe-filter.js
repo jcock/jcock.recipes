@@ -64,7 +64,7 @@ const FormRecipeFilter = ({
 			</form>
 			<i
 				className={`
-					fixed inset-0 z-1 transition
+					fixed inset-0 z-1 bg-black/50 transition
 					${filterIsOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
 				`}
 				aria-hidden="true"
