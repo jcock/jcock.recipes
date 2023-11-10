@@ -38,7 +38,7 @@ const RecipeLayout = ({
 
 			{(frontMatter?.type || frontMatter?.time) &&
 				<Section
-					id="recipe-list"
+					id="recipe-info"
 					className="container px-4 -translate-y-7"
 				>
 					<div className="flex items-center justify-between gap-4 px-4 md:px-6 py-4 bg-sky-200 text-black/70 shadow-lg">
