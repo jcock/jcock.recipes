@@ -9,7 +9,7 @@ import Icon from '~/components/modules/icon';
 import RecipeTypes from 'data/recipe-types';
 
 const FormRecipeFilter = ({
-	filteredValue,
+	filteredItem,
 	updateFilter,
 	className
 }) => {
@@ -25,14 +25,14 @@ const FormRecipeFilter = ({
 			<form>
 				<Select.Root
 					onOpenChange={setFilterIsOpen}
-					defaultValue={filteredValue.id}
-					onValueChange={e => updateFilter(RecipeTypes.find(item => item.id === e))}
+					defaultValue={filteredItem.value}
+					onValueChange={e => updateFilter(RecipeTypes.find(item => item.value === e))}
 				>
 					<Select.Trigger
 						className={`
 							relative z-10 flex items-center justify-between gap-2 w-full sm:w-auto min-w-[6rem] rounded-sm px-3 py-2 text-xs leading-none font-sans bg-opacity-10 border border-black/10 transition hover:bg-opacity-80 hover:text-white focus:bg-opacity-80 focus:text-white focus:shadow-[0_0_0_1px] focus:shadow-black/50 outline-none
-							${filteredValue.color.selected.color}
-							${filteredValue.color.background}
+							${filteredItem.color.selected.color}
+							${filteredItem.color.background}
 						`}
 						aria-label="Food"
 					>

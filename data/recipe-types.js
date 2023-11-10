@@ -1,6 +1,7 @@
 const RecipeTypes = [
 	{
 		id: 'all',
+		value: 'all',
 		name: 'All',
 		color: {
 			background: 'bg-gray-900',
@@ -13,6 +14,7 @@ const RecipeTypes = [
 	},
 	{
 		id: 'dessert',
+		value: 'dessert',
 		name: 'Dessert',
 		color: {
 			background: 'bg-pink-400',
@@ -25,6 +27,7 @@ const RecipeTypes = [
 	},
 	{
 		id: 'drink',
+		value: 'drink',
 		name: 'Drink',
 		color: {
 			background: 'bg-orange-400',
@@ -37,6 +40,7 @@ const RecipeTypes = [
 	},
 	{
 		id: 'meal',
+		value: 'meal',
 		name: 'Meal',
 		color: {
 			background: 'bg-blue-400',
@@ -49,6 +53,7 @@ const RecipeTypes = [
 	},
 	{
 		id: 'misc',
+		value: 'misc',
 		name: 'Misc',
 		color: {
 			background: 'bg-gray-500',
@@ -61,6 +66,7 @@ const RecipeTypes = [
 	},
 	{
 		id: 'side',
+		value: 'side',
 		name: 'Side',
 		color: {
 			background: 'bg-purple-400',
@@ -73,6 +79,7 @@ const RecipeTypes = [
 	},
 	{
 		id: 'snack',
+		value: 'snack',
 		name: 'Snack',
 		color: {
 			background: 'bg-yellow-400',

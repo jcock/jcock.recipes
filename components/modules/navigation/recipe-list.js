@@ -28,7 +28,7 @@ const NavRecipeList = ({
 		<div>
 			<FilterRecipeForm
 				updateFilter={updateFilter}
-				filteredValue={filter}
+				filteredItem={filter}
 			/>
 
 			<AnimatePresence mode="popLayout">
