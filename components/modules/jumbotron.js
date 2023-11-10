@@ -17,7 +17,7 @@ const Jumbotron = ({
 		>
 			<div
 				className={`
-					row-span-full col-span-full grid items-center relative z-10 container px-4 py-14
+					row-span-full col-span-full grid place-items-center relative z-10 container px-4 py-14
 					${contentClasses ?? ''}
 				`}
 			>

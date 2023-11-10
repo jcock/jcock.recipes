@@ -32,7 +32,6 @@ const RecipeLayout = ({
 						}}
 					/>
 				}
-				contentClasses={frontMatter?.mode === 'page' ? 'place-content-center' : null}
 			>
 				<Jumbotron.Title>{title}</Jumbotron.Title>
 			</Jumbotron>
