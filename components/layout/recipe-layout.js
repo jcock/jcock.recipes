@@ -9,8 +9,6 @@ import Grid from '~/components/modules/grid';
 import IngredientsCard from '~/components/modules/cards/ingredients';
 import InstructionsCard from '~/components/modules/cards/instructions';
 
-import imageRecipeDefault from '~/images/recipe-default.jpg';
-
 const RecipeLayout = ({
 	children,
 	pageOpts
