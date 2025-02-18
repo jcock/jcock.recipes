@@ -1,56 +1,41 @@
-{
-	"env": {
-		"browser": true,
-		"node": true
+const path = require("node:path");
+
+module.exports = {
+	extends: ["next", "prettier"],
+	plugins: ["prettier"],
+	env: {
+		browser: true,
+		node: true,
+		es2021: true,
 	},
-	"extends": [
-		"next",
-		"prettier"
-	],
-	"settings": {
+	settings: {
 		"import/resolver": {
-			"alias": [
-				["~/*", "./*"]
-			]
-		}
+			alias: {
+				map: [["~", "./"]],
+				extensions: [".js", ".jsx", ".ts", ".tsx"],
+			},
+		},
 	},
-	"rules": {
-		// https://eslint.org/docs/2.0.0/rules/strict
-		"strict": 0,
-		"semi": [
-			"error",
-			"always"
-		],
-		"indent": ["error", "tab"],
-		"comma-dangle": ["error", "never"],
-		"arrow-parens": [
-			"error",
-			"as-needed"
-		],
-		"object-curly-spacing": [
-			"error",
-			"always"
-		],
-		"space-in-parens": [
-			"error",
-			"never"
-		],
-		"no-multiple-empty-lines": [
+	ignorePatterns: ["**/.next/**"],
+	rules: {
+		strict: 0,
+		"react/display-name": "off",
+		"react/no-unescaped-entities": "off",
+		"prefer-arrow-callback": [
 			"error",
 			{
-				"max": 1
-			}
+				allowNamedFunctions: true,
+			},
 		],
-		"prefer-arrow-callback": [ "error", { "allowNamedFunctions": true } ],
 		"react/prop-types": "off",
-		"import/no-webpack-loader-syntax": [0],
+		"import/no-webpack-loader-syntax": "off",
 		"react/jsx-pascal-case": [
 			1,
 			{
-				"allowNamespace": true
-			}
+				allowNamespace: true,
+			},
 		],
-		// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/master/docs/rules
+		"prettier/prettier": "error",
 		"jsx-a11y/accessible-emoji": 1,
 		"jsx-a11y/alt-text": 1,
 		"jsx-a11y/anchor-has-content": 1,
@@ -63,23 +48,23 @@
 		"jsx-a11y/autocomplete-valid": [
 			1,
 			{
-				"inputComponents": []
-			}
+				inputComponents: [],
+			},
 		],
 		"jsx-a11y/click-events-have-key-events": 1,
 		"jsx-a11y/control-has-associated-label": [
 			1,
 			{
-				"ignoreElements": [
+				ignoreElements: [
 					"audio",
 					"canvas",
 					"embed",
 					"input",
 					"textarea",
 					"tr",
-					"video"
+					"video",
 				],
-				"ignoreRoles": [
+				ignoreRoles: [
 					"grid",
 					"listbox",
 					"menu",
@@ -89,10 +74,10 @@
 					"tablist",
 					"toolbar",
 					"tree",
-					"treegrid"
+					"treegrid",
 				],
-				"includeRoles": ["alert", "dialog"]
-			}
+				includeRoles: ["alert", "dialog"],
+			},
 		],
 		"jsx-a11y/heading-has-content": 1,
 		"jsx-a11y/html-has-lang": 1,
@@ -101,7 +86,7 @@
 		"jsx-a11y/interactive-supports-focus": [
 			1,
 			{
-				"tabbable": [
+				tabbable: [
 					"button",
 					"checkbox",
 					"link",
@@ -110,9 +95,9 @@
 					"slider",
 					"spinbutton",
 					"switch",
-					"textbox"
-				]
-			}
+					"textbox",
+				],
+			},
 		],
 		"jsx-a11y/label-has-associated-control": 1,
 		"jsx-a11y/lang": 1,
@@ -125,10 +110,10 @@
 		"jsx-a11y/no-noninteractive-element-interactions": [
 			1,
 			{
-				"body": ["onError", "onLoad"],
-				"iframe": ["onError", "onLoad"],
-				"img": ["onError", "onLoad"]
-			}
+				body: ["onError", "onLoad"],
+				iframe: ["onError", "onLoad"],
+				img: ["onError", "onLoad"],
+			},
 		],
 		"jsx-a11y/no-noninteractive-element-to-interactive-role": 1,
 		"jsx-a11y/no-noninteractive-tabindex": 1,
@@ -139,6 +124,6 @@
 		"jsx-a11y/role-supports-aria-props": 1,
 		"jsx-a11y/scope": 1,
 		"jsx-a11y/tabindex-no-positive": 1,
-		"react-hooks/rules-of-hooks": 2
-	}
-}
+		"react-hooks/rules-of-hooks": 2,
+	},
+};
