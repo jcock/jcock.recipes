@@ -18,7 +18,7 @@ Just a place to store mom's recipes and other favorites.
 ├── /pages/                     # Pages
 ├── /styles/                    # Styles
 ├── /.env.*                     # Environment variables
-├── /next-config.js             # Next.js configuration
+├── /next.config.mjs            # Next.js configuration
 ├── /postcss.config.js          # PostCSS config
 ├── /tailwind.config.js         # Tailwind config
 ```
@@ -42,6 +42,9 @@ Just a place to store mom's recipes and other favorites.
 ---
 
 ## Get started
+
+Use Node.js 24, as specified in `.nvmrc`. Netlify uses the same file to select
+the build runtime. The installed PostCSS plugins require a modern Node.js runtime.
 
 Clone repo:
 

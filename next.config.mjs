@@ -1,7 +1,12 @@
-const site = require('./data/site.json');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+import { readFileSync } from 'node:fs';
+import nextra from 'nextra';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 
-const withNextra = require('nextra').default({
+const site = JSON.parse(
+	readFileSync(new URL('./data/site.json', import.meta.url), 'utf8')
+);
+
+const withNextra = nextra({
 	theme: './components/layout/recipe-layout.js'
 });
 
@@ -85,4 +90,4 @@ const nextConfig = {
 	}
 };
 
-module.exports = withNextra(nextConfig);
+export default withNextra(nextConfig);
