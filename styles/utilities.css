@@ -1,0 +1,42 @@
+@utility container {
+	width: 100%;
+	margin-inline: auto;
+	@media (width >= 640px) {
+		max-width: 640px;
+	}
+	@media (width >= 768px) {
+		max-width: 768px;
+	}
+	@media (width >= 1024px) {
+		max-width: 1024px;
+	}
+	@media (width >= 1280px) {
+		max-width: 1280px;
+	}
+	@media (width >= 1536px) {
+		max-width: 1536px;
+	}
+}
+
+@utility track {
+	& * {
+		pointer-events: none;
+	}
+}
+
+@utility prose {
+	--tw-prose-body: var(--prose-body);
+	--tw-prose-headings: var(--foreground);
+	--tw-prose-links: var(--foreground);
+	--tw-prose-bold: var(--foreground);
+	--tw-prose-counters: var(--muted-foreground);
+	--tw-prose-bullets: var(--color-gray-300);
+	--tw-prose-hr: var(--border);
+	--tw-prose-quotes: var(--foreground);
+	--tw-prose-quote-borders: var(--border);
+	--tw-prose-code: var(--foreground);
+	--tw-prose-pre-bg: var(--muted);
+	--tw-prose-pre-code: var(--foreground);
+	--tw-prose-th-borders: var(--border);
+	--tw-prose-td-borders: var(--border);
+}

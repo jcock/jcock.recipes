@@ -5,7 +5,6 @@
 	"author": "@jcock",
 	"url": "https://jcockrecipes.netlify.app",
 	"logo": "favicon.svg",
-	"shareImage": "share.png",
 	"colors": {
 		"progress": "#000",
 		"manifest": {

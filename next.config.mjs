@@ -1,16 +1,16 @@
-import nextra from 'nextra';
+import createMDX from '@next/mdx';
 
-const svgAsComponentRule = {
-	loader: '@svgr/webpack',
-	options: { dimensions: false }
-};
-
-const withNextra = nextra({
-	theme: './components/layout/recipe-layout.js'
+const withMDX = createMDX({
+	options: {
+		remarkPlugins: ['remark-frontmatter', 'remark-mdx-frontmatter']
+	}
 });
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
+	allowedDevOrigins: ['127.0.0.1'],
+	pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
 	images: {
 		deviceSizes: [640, 750, 1080, 1920, 2048, 3840],
 		qualities: [25, 50, 75, 90, 100],
@@ -21,40 +21,23 @@ const nextConfig = {
 			}
 		]
 	},
-	webpack(config) {
-		// Grab the existing rule that handles SVG imports
-		const fileLoaderRule = config.module.rules.find(rule =>
-			rule.test?.test?.('.svg')
-		);
-		if (!fileLoaderRule) {
-			throw new Error(
-				'Could not find the Next.js image loader for SVG imports.'
-			);
-		}
-
-		config.module.rules.push(
-			// Reapply the existing rule, but only for svg imports ending in ?url
-			{
-				...fileLoaderRule,
-				test: /\.svg$/i,
-				resourceQuery: /url/ // *.svg?url
-			},
-			// Convert all other *.svg imports to React components
-			{
-				test: /\.svg$/i,
-				issuer: fileLoaderRule.issuer,
-				resourceQuery: {
-					not: [...(fileLoaderRule.resourceQuery?.not ?? []), /url/]
-				},
-				use: [svgAsComponentRule]
+	turbopack: {
+		rules: {
+			'*.svg': {
+				loaders: [{ loader: '@svgr/webpack', options: { dimensions: false } }],
+				as: '*.js'
 			}
-		);
-
-		// Modify the file loader rule to ignore *.svg, since we have it handled now.
-		fileLoaderRule.exclude = /\.svg$/i;
-
-		return config;
+		}
+	},
+	async redirects() {
+		return [
+			{
+				source: '/share.png',
+				destination: '/opengraph-image.png',
+				permanent: true
+			}
+		];
 	}
 };
 
-export default withNextra(nextConfig);
+export default withMDX(nextConfig);

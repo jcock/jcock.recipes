@@ -3,6 +3,7 @@
 	"description": "Just a place to store family recipes and other favorites.",
 	"version": "1.0.0",
 	"private": true,
+	"type": "module",
 	"author": "@jcock",
 	"scripts": {
 		"predev": "npm run generate-favicons",
@@ -12,7 +13,9 @@
 		"start": "next start",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"generate-favicons": "node scripts/generate-favicons.js"
+		"generate-favicons": "node scripts/generate-favicons.mjs",
+		"typecheck": "tsc --noEmit",
+		"test": "node --test tests/*.test.mjs"
 	},
 	"keywords": [
 		"next.js",
@@ -21,53 +24,44 @@
 		"purgecss"
 	],
 	"dependencies": {
-		"@apollo/client": "^4.3.7",
-		"@headlessui/react": "^2.2.10",
-		"@hookform/resolvers": "^7.0.5",
-		"@iconify/react": "^6.0.4",
-		"@radix-ui/react-accordion": "^1.3.1",
-		"@radix-ui/react-select": "^2.4.1",
-		"favicons": "^7.3.1",
-		"framer-motion": "^14.11.1",
-		"graphql": "^17.1.0",
-		"next": "^15.5.29",
-		"next-progress": "^2.3.1",
-		"nextra": "^3.3.1",
-		"nextra-theme-blog": "^3.3.1",
+		"@base-ui/react": "^1.9.0",
+		"@mdx-js/loader": "^3.1.1",
+		"@mdx-js/react": "^3.1.1",
+		"@next/mdx": "~16.4.5",
+		"@phosphor-icons/react": "^2.1.10",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"motion": "^14.11.1",
+		"next": "~16.4.5",
+		"next-themes": "^0.4.6",
+		"nuqs": "^2.0.0",
 		"react": "19.3.1",
 		"react-dom": "19.3.1",
-		"react-headroom": "^3.2.1",
-		"react-hook-form": "^7.91.0",
-		"react-intersection-observer": "^11.0.1",
-		"react-player": "^3.4.0",
-		"react-scroll": "^1.9.3",
-		"react-slider": "^2.0.6",
-		"react-wrap-balancer": "^1.1.1",
-		"swiper": "^14.4.0",
-		"yup": "^1.7.1"
+		"remark-frontmatter": "^5.0.0",
+		"remark-mdx-frontmatter": "^6.0.0",
+		"yaml": "^2.9.1",
+		"zod": "^4.6.7"
 	},
 	"devDependencies": {
-		"@eslint/eslintrc": "^3.3.7",
 		"@svgr/webpack": "^8.1.0",
-		"@tailwindcss/aspect-ratio": "^0.4.2",
-		"@tailwindcss/forms": "^0.5.11",
-		"@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
+		"@tailwindcss/postcss": "^4.3.5",
 		"@tailwindcss/typography": "^0.5.20",
-		"autoprefixer": "^10.6.2",
-		"dotenv": "^18.0.10",
+		"@types/mdx": "^2.0.14",
+		"@types/node": "^24.0.0",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.3.0",
 		"eslint": "^9.39.5",
-		"eslint-config-next": "^15.5.29",
+		"eslint-config-next": "~16.4.5",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-prettier": "^5.5.7",
-		"eslint-plugin-react": "^7.37.5",
+		"favicons": "^7.3.1",
 		"postcss": "^8.5.32",
-		"postcss-nesting": "^14.0.3",
-		"postcss-preset-env": "^11.6.2",
 		"prettier": "^3.9.10",
-		"prettier-plugin-tailwindcss": "^0.8.1",
-		"tailwind-merge": "^2.6.1",
-		"tailwindcss": "^3.4.19",
-		"typescript": "^6.0.3"
+		"shadcn": "^4.23.0",
+		"tailwind-merge": "^3.7.0",
+		"tailwindcss": "^4.3.5",
+		"tw-animate-css": "^1.4.0",
+		"typescript": "~6.0.3"
 	},
 	"browserslist": [
 		">0.25%",
@@ -79,5 +73,8 @@
 	},
 	"bugs": {
 		"url": "https://github.com/jcock/jcock.recipes/issues"
+	},
+	"engines": {
+		"node": "24.x"
 	}
 }
