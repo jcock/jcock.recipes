@@ -1,131 +1,117 @@
 # jcock.recipes
 
-Just a place to store mom's recipes and other favorites.
+Family recipes and other favorites, built with Next.js 16 App Router, React 19,
+strict TypeScript, MDX, Tailwind CSS 4, and shadcn/ui with Base UI primitives.
 
-![Repo Size](https://img.shields.io/github/repo-size/badges/shields.svg?style=for-the-badge)
-[![License: 0BSD](https://img.shields.io/badge/license-0BSD-blue.svg?style=for-the-badge)](http://unlicense.org/)
+The project follows the structure of jcock.rocks-2026 while preserving the recipe
+site’s layout, URLs, Inter/Lora typography, and existing color palette.
 
----
+## Development
 
-## Directory Layout
-
-```shell
-├── /components/                # Components
-├── /data/                      # Site data
-├── /hooks/                     # Custom hooks
-├── /images/                    # Images
-├── /public/                    # Static assets
-├── /pages/                     # Pages
-├── /styles/                    # Styles
-├── /.env.*                     # Environment variables
-├── /next.config.mjs            # Next.js configuration
-├── /postcss.config.js          # PostCSS config
-├── /tailwind.config.js         # Tailwind config
-```
-
----
-
-## Features
-
-### Tech Stack
-
-- [Next.js](https://nextjs.org/)
-- [Apollo](https://www.apollographql.com/)
-
-### UI
-
-- [TailwindCSS](https://tailwindcss.com/)
-- [HeadlessUI](https://headlessui.dev/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [Iconify](https://iconify.design/)
-
----
-
-## Get started
-
-Use Node.js 24, as specified in `.nvmrc`. Netlify uses the same file to select
-the build runtime. The installed PostCSS plugins require a modern Node.js runtime.
-
-Clone repo:
+Use Node.js 24 (also selected on Netlify by `.nvmrc`):
 
 ```sh
-git clone git@github.com:jcock/jcock.recipes.git
-cd my-new-website
-npm i
-```
-
-Run the project in development mode ([http://localhost:3000](http://localhost:3000)):
-
-```sh
+nvm use
+npm ci
 npm run dev
 ```
 
-This site uses the Pages Router with a custom Nextra theme. Keep Next.js on v15,
-Nextra on v3, and Tailwind CSS on v3; upgrading those major versions requires
-migrating the router, theme integration, and styles. The package manifest and
-lockfile use compatible versions of these packages and the lint tooling.
+## Commands
 
-### Lint
+- `npm run dev`: generate favicons and start the Turbopack development server.
+- `npm run build`: generate favicons and create the production build.
+- `npm start`: serve the production build.
+- `npm run lint` / `npm run lint:fix`: check or fix ESLint and formatting issues.
+- `npm run typecheck`: run strict TypeScript checks.
+- `npm test`: validate recipe metadata and protect existing recipe URLs.
+- `npm run generate-favicons`: regenerate icons and the manifest manually.
 
-- `npm run lint` - Run ESLint
-- `npm run lint:fix` - Apply automatic ESLint and formatting fixes
+## Structure
 
-### Favicons and SVGs
-
-`npm run generate-favicons` generates the PNG/ICO icons and web app manifest in
-`public/` from the logo configured in `data/site.json`. It also runs automatically
-before `npm run dev` and `npm run build`, including Netlify builds. Generated
-files are ignored by Git; the editable `public/favicon.svg` is preserved.
-
-Import an SVG as a React component with `import Logo from '~/images/logo.svg'`.
-For a static image import to use with `next/image`, append `?url`:
-`import logo from '~/images/logo.svg?url'`. This project uses the Webpack SVGR
-pipeline required by its Nextra integration.
-
-### Build your site for production
-
-```sh
-npm run build
+```text
+app/
+  layout.tsx                 Root layout, fonts, metadata, and providers
+  page.tsx                   Recipe index
+  home.mdx                   Home page content and frontmatter
+  [slug]/page.tsx            Static recipe routes at the existing URLs
+  recipes/content/*.mdx     Recipe sources
+  not-found.tsx              Custom 404 from the reference project
+  opengraph-image.png        Original recipe sharing image
+components/
+  layout/                   Header, footer, and recipe layout
+  modules/core/             shadcn/Base UI primitives
+  modules/                  Recipe UI, navigation, MDX, and animations
+  util/                     Providers and structured data
+data/                       Site settings and typed recipe categories
+lib/                        Recipe loading/validation, SEO, and cn()
+styles/
+  app.css                   Tailwind/plugins and stylesheet imports
+  theme.css                 Original color/font tokens and semantic themes
+  base.css                  Global defaults and reduced-motion behavior
+  components.css            Recipe-specific styling
+  utilities.css             Containers and typography utilities
+  fonts/index.ts            Inter and Lora via next/font
+types/                      SVG type declarations
+scripts/                    Favicon generation
+tests/                      Content and route regression checks
 ```
 
-### Run production build
+## Recipes
 
-```sh
-npm run build
-```
+Edit or add an MDX file in `app/recipes/content/`. The filename becomes the URL,
+for example `steak.mdx` is served at `/steak`. Existing filenames are retained.
+The build discovers recipes automatically and validates the frontmatter:
 
+```mdx
+---
+title: Example Recipe
+type: meal
+time: 35 mins
+servings: 4 servings
+image: https://images.unsplash.com/example-image
+ingredients:
+  - 1 cup example ingredient
 ---
 
-## [Unlighthouse](https://unlighthouse.dev/)
-
-Run lighthouse performance metrics on your entire site.
-
-```sh
-unlighthouse --site <your-site>
+1. First instruction.
+2. Next instruction.
 ```
 
-`<your-site>` is the URL of your site, e.g. `https://www.example.com`.
+Valid categories are dessert, drink, meal, misc, side, and snack. Time, servings,
+and image are optional. The original 22 recipe URLs are covered by regression
+checks; new recipes can be added without changing those checks.
 
----
+Category filters use shareable URLs such as `/?type=meal` and support browser
+back/forward navigation. The footer theme toggle follows the system by default
+and remembers an explicit light/dark choice after clicking it.
 
-## Upgrade `package.json` package versions
+## Styling and components
 
-Install [npm-check-updates](https://www.npmjs.com/package/npm-check-updates):
+Edit CSS theme variables in `styles/theme.css`; the former Tailwind config’s
+custom colors and fluid typography scale have been carried over. The light theme
+keeps the original appearance, with a dark theme built from the same palette.
 
-```sh
-npm i -g npm-check-updates
-```
+The shadcn configuration matches the reference project’s Base UI/Vega setup,
+Phosphor icons, `~/` alias, and `components/modules/core` location. Recipe-specific
+variants preserve the existing card, select, and accordion styling.
 
-Upgrade a project's package file:
+## Images and favicons
 
-```sh
-# Inside of project root folder
+SVG imports become React components through the Turbopack SVGR loader. For a
+static SVG URL, place the asset in `public/` and use its root-relative path.
 
-ncu -u    # Upgrade package.json
-npm i     # Update installed packages and package-lock.json
-```
+The logo selected by `data/site.json` generates the PNG/ICO icons and manifest
+before development and production builds. Generated assets are ignored by Git;
+the editable SVG favicon and its adaptive light/dark styling are preserved.
 
----
+The original sharing image now lives at `app/opengraph-image.png`, using Next.js
+metadata conventions. The former `/share.png` URL permanently redirects to it.
+
+## Netlify
+
+Keep the build command as `npm run build` and publish directory as `.next`.
+Netlify’s automatic Next.js adapter handles the App Router. Node.js 24 is selected
+by `.nvmrc`. No Nextra or legacy Webpack favicon plugin is required.
 
 ## Contributors
 

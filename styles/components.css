@@ -1,0 +1,65 @@
+@layer components {
+	[data-slot='select-trigger'][data-variant='recipe'] {
+		@apply h-auto min-h-8 w-full min-w-24 rounded-sm px-3 py-2 text-xs leading-none font-sans shadow-none sm:w-auto;
+		color: var(--filter-color, var(--foreground));
+		background: color-mix(
+			in srgb,
+			var(--filter-color, var(--foreground)) 10%,
+			var(--background)
+		);
+		&:hover,
+		&:focus-visible {
+			color: white;
+			background: var(--filter-color, var(--foreground));
+		}
+	}
+	[data-slot='select-item'][data-category] {
+		@apply font-sans text-xs;
+		&[data-highlighted],
+		&[data-selected] {
+			color: white;
+			background: var(--filter-color);
+		}
+	}
+	[data-category='all'] {
+		--filter-color: var(--foreground);
+		&[data-highlighted],
+		&[data-selected],
+		&:hover {
+			color: var(--background);
+		}
+	}
+	[data-category='dessert'] {
+		--filter-color: var(--color-recipe-dessert);
+	}
+	[data-category='drink'] {
+		--filter-color: var(--color-recipe-drink);
+	}
+	[data-category='meal'] {
+		--filter-color: var(--color-recipe-meal);
+	}
+	[data-category='misc'] {
+		--filter-color: var(--color-recipe-misc);
+	}
+	[data-category='side'] {
+		--filter-color: var(--color-recipe-side);
+	}
+	[data-category='snack'] {
+		--filter-color: var(--color-recipe-snack);
+	}
+	[data-slot='select-trigger'][data-variant='theme'] {
+		@apply h-6 rounded-sm font-sans text-xs shadow-none;
+	}
+}
+
+/* Keep recipe list spacing independent of the typography plugin's utility order. */
+.recipe-prose {
+	& ul,
+	& ol {
+		margin-block: 0;
+	}
+	& ul > li,
+	& ol > li {
+		margin-block: 0.5rem;
+	}
+}
