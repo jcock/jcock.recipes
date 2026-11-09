@@ -6,13 +6,9 @@ import { inter } from '~/styles/fonts';
 
 import Icon from '~/components/modules/icon';
 
-import RecipeTypes from 'data/recipe-types';
+import RecipeTypes from '~/data/recipe-types';
 
-const FormRecipeFilter = ({
-	filteredItem,
-	updateFilter,
-	className
-}) => {
+const FormRecipeFilter = ({ filteredItem, updateFilter, className }) => {
 	const [filterIsOpen, setFilterIsOpen] = useState(false);
 
 	return (
@@ -26,7 +22,9 @@ const FormRecipeFilter = ({
 				<Select.Root
 					onOpenChange={setFilterIsOpen}
 					defaultValue={filteredItem.value}
-					onValueChange={e => updateFilter(RecipeTypes.find(item => item.value === e))}
+					onValueChange={e =>
+						updateFilter(RecipeTypes.find(item => item.value === e))
+					}
 				>
 					<Select.Trigger
 						className={`
@@ -38,9 +36,7 @@ const FormRecipeFilter = ({
 					>
 						<Select.Value placeholder="Select a food type" />
 						<Select.Icon>
-							<Icon
-								icon="mdi:chevron-down"
-							/>
+							<Icon icon="mdi:chevron-down" />
 						</Select.Icon>
 					</Select.Trigger>
 					<Select.Portal>
@@ -52,10 +48,7 @@ const FormRecipeFilter = ({
 						>
 							<Select.Viewport className="p-1 space-y-px">
 								{RecipeTypes.map(item => (
-									<SelectItem
-										key={item.id}
-										item={item}
-									/>
+									<SelectItem key={item.id} item={item} />
 								))}
 							</Select.Viewport>
 						</Select.Content>
@@ -73,31 +66,25 @@ const FormRecipeFilter = ({
 	);
 };
 
-const SelectItem = forwardRef((
-	{
-		children,
-		className,
-		item,
-		...props
-	},
-	forwardedRef
-) => {
-	return (
-		<Select.Item
-			ref={forwardedRef}
-			value={item.id}
-			className={twMerge(
-				'group flex items-center py-3 sm:py-1.5 px-3 relative select-none text-xs leading-none rounded-sm cursor-pointer data-[disabled]:text-gray-550 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:text-white data-[state=checked]:text-white',
-				item.color.selected.background,
-				item.color.hover,
-				className ?? ''
-			)}
-			{...props}
-		>
-			<Select.ItemText>{item.name}</Select.ItemText>
-		</Select.Item>
-	);
-});
+const SelectItem = forwardRef(
+	({ children, className, item, ...props }, forwardedRef) => {
+		return (
+			<Select.Item
+				ref={forwardedRef}
+				value={item.id}
+				className={twMerge(
+					'group flex items-center py-3 sm:py-1.5 px-3 relative select-none text-xs leading-none rounded-sm cursor-pointer data-[disabled]:text-gray-550 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:text-white data-[state=checked]:text-white',
+					item.color.selected.background,
+					item.color.hover,
+					className ?? ''
+				)}
+				{...props}
+			>
+				<Select.ItemText>{item.name}</Select.ItemText>
+			</Select.Item>
+		);
+	}
+);
 
 SelectItem.displayName = 'SelectItem';
 export default FormRecipeFilter;

@@ -4,18 +4,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 
-const cardClasses = (className, hasShadow) => twMerge(
-	'relative flex flex-wrap flex-col bg-clip-border break-words bg-white/80 overflow-hidden border border-black/10 lg:border-black/5',
-	hasShadow ? 'shadow-lg' : '',
-	className ?? ''
-);
-
-const Card = ({
-	children
-}) => {
-	return (
-		{ children }
+const cardClasses = (className, hasShadow) =>
+	twMerge(
+		'relative flex flex-wrap flex-col bg-clip-border break-words bg-white/80 overflow-hidden border border-black/10 lg:border-black/5',
+		hasShadow ? 'shadow-lg' : '',
+		className ?? ''
 	);
+
+const Card = ({ children }) => {
+	return { children };
 };
 
 const CardDefault = forwardRef((props, ref) => {
@@ -30,11 +27,7 @@ const CardDefault = forwardRef((props, ref) => {
 		...rest
 	} = props;
 	return (
-		<div
-			ref={ref}
-			className={cardClasses(className, hasShadow)}
-			{...rest}
-		>
+		<div ref={ref} className={cardClasses(className, hasShadow)} {...rest}>
 			{image && image}
 			{header && header}
 			{children}
@@ -87,31 +80,20 @@ export const CardImage = ({
 	...rest
 }) => {
 	return (
-		<div
-			className={twMerge(
-				'w-full overflow-hidden',
-				className ?? ''
-			)}
-		>
+		<div className={twMerge('w-full overflow-hidden', className ?? '')}>
 			<Image
 				src={image || image.src}
 				width={image.width ? image.width : null}
 				height={image.height ? image.height : null}
 				alt={alt ?? ''}
-				className={twMerge(
-					'w-full h-auto',
-					imageClassName ?? ''
-				)}
+				className={twMerge('w-full h-auto', imageClassName ?? '')}
 				{...rest}
 			/>
 		</div>
 	);
 };
 
-export const CardHeader = ({
-	children,
-	className
-}) => {
+export const CardHeader = ({ children, className }) => {
 	return (
 		<div
 			className={twMerge(
@@ -124,10 +106,7 @@ export const CardHeader = ({
 	);
 };
 
-export const CardBody = ({
-	children,
-	className
-}) => {
+export const CardBody = ({ children, className }) => {
 	return (
 		<div
 			className={twMerge(
@@ -140,11 +119,7 @@ export const CardBody = ({
 	);
 };
 
-export const CardTitle = ({
-	as = 'h3',
-	children,
-	className
-}) => {
+export const CardTitle = ({ as = 'h3', children, className }) => {
 	const Title = as;
 
 	return (
@@ -159,10 +134,7 @@ export const CardTitle = ({
 	);
 };
 
-export const CardFooter = ({
-	children,
-	className
-}) => {
+export const CardFooter = ({ children, className }) => {
 	return (
 		<div
 			className={twMerge(

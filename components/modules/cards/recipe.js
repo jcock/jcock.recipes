@@ -7,20 +7,17 @@ import Button from '~/components/modules/button';
 import imageRecipeDefault from '~/images/recipe-default.jpg';
 
 const CardRecipe = forwardRef((props, ref) => {
-	const {
-		recipe,
-		className,
-		...rest
-	} = props;
+	const { recipe, className, ...rest } = props;
 
-	const imageClassName = 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-focus:scale-110';
+	const imageClassName =
+		'w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-focus:scale-110';
 
 	return (
 		<Card.Link
 			ref={ref}
 			href={recipe.route}
 			image={
-				recipe.frontMatter?.image ?
+				recipe.frontMatter?.image ? (
 					<Card.Image
 						image={{
 							src: recipe.frontMatter.image,
@@ -30,7 +27,7 @@ const CardRecipe = forwardRef((props, ref) => {
 						className="aspect-w-4 aspect-h-3"
 						imageClassName={imageClassName}
 					/>
-					:
+				) : (
 					<Card.Image
 						image={imageRecipeDefault}
 						width={640}
@@ -38,6 +35,7 @@ const CardRecipe = forwardRef((props, ref) => {
 						className="aspect-w-4 aspect-h-3"
 						imageClassName={imageClassName}
 					/>
+				)
 			}
 			className={`
 				shadow-lg sm:shadow-none
@@ -47,7 +45,11 @@ const CardRecipe = forwardRef((props, ref) => {
 		>
 			<Card.Body className="sm:absolute inset-0 sm:text-white/90 sm:grid items-stretch sm:bg-gradient-to-b from-gray-850 via-transparent to-gray-850">
 				<div className="flex flex-row sm:flex-col justify-between items-start">
-					<Card.Title className="capitalize transition border-b sm:border-b-0 border-transparent group-hover:border-black/20 group-hover:sm:-translate-y-8 group-focus:border-black/20 group-focus:sm:-translate-y-8">{recipe.frontMatter?.title ? recipe.frontMatter.title : recipe.title}</Card.Title>
+					<Card.Title className="capitalize transition border-b sm:border-b-0 border-transparent group-hover:border-black/20 group-hover:sm:-translate-y-8 group-focus:border-black/20 group-focus:sm:-translate-y-8">
+						{recipe.frontMatter?.title
+							? recipe.frontMatter.title
+							: recipe.title}
+					</Card.Title>
 
 					<Button.Span
 						variant="light"
@@ -58,32 +60,26 @@ const CardRecipe = forwardRef((props, ref) => {
 						<span className="sr-only">View recipe</span>
 					</Button.Span>
 
-					{(recipe.frontMatter?.type || recipe.frontMatter?.time) &&
+					{(recipe.frontMatter?.type || recipe.frontMatter?.time) && (
 						<div className="order-2 sm:order-first flex items-start justify-between gap-4  absolute sm:static top-0 inset-x-0 p-4 sm:p-0 sm:w-full text-white bg-gradient-to-b from-gray-850 sm:from-transparent to-transparent">
-							{recipe.frontMatter.type &&
-								<Badge
-									variant={recipe.frontMatter.type.toLowerCase()}
-								>
+							{recipe.frontMatter.type && (
+								<Badge variant={recipe.frontMatter.type.toLowerCase()}>
 									{recipe.frontMatter.type}
 								</Badge>
-							}
+							)}
 
-							{(recipe.frontMatter.time || recipe.frontMatter.servings) &&
+							{(recipe.frontMatter.time || recipe.frontMatter.servings) && (
 								<ul className="flex flex-col items-end gap-1 text-2xs font-sans font-semibold">
-									{recipe.frontMatter.time &&
-										<li>
-											{recipe.frontMatter.time}
-										</li>
-									}
-									{recipe.frontMatter.servings &&
-										<li className="pl-2">
-											{recipe.frontMatter.servings}
-										</li>
-									}
+									{recipe.frontMatter.time && (
+										<li>{recipe.frontMatter.time}</li>
+									)}
+									{recipe.frontMatter.servings && (
+										<li className="pl-2">{recipe.frontMatter.servings}</li>
+									)}
 								</ul>
-							}
+							)}
 						</div>
-					}
+					)}
 				</div>
 			</Card.Body>
 		</Card.Link>

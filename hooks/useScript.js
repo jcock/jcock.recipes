@@ -1,63 +1,62 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useSyncExternalStore } from 'react';
 
-const isBrowser = typeof window !== 'undefined';
+const findScript = src =>
+	Array.from(document.scripts).find(
+		script => script.getAttribute('src') === src
+	);
 
 function useScript(src) {
-	// Keep track of script status ("idle", "loading", "ready", "error")
-	const [status, setStatus] = useState(src ? "loading" : "idle");
-	useEffect(
-		() => {
-			// Allow falsy src value if waiting on other data needed for
-			// constructing the script URL passed to this hook.
-			if (!isBrowser || !src) {
-				setStatus("idle");
-				return;
-			}
-			// Fetch existing script element by src
-			// It may have been added by another intance of this hook
-			let script = document.querySelector(`script[src="${src}"]`);
+	const subscribe = useCallback(
+		onStoreChange => {
+			if (!src) return () => {};
+
+			let script = findScript(src);
 			if (!script) {
-				// Create script
-				script = document.createElement("script");
+				script = document.createElement('script');
 				script.src = src;
 				script.async = true;
-				script.setAttribute("data-status", "loading");
-				// Add script to document body
-				document.body.appendChild(script);
-				// Store status in attribute on script
-				// This can be read by other instances of this hook
-				const setAttributeFromEvent = event => {
+				script.setAttribute('data-status', 'loading');
+
+				// Retain the status for other subscribers and later mounts.
+				const setStatus = event => {
 					script.setAttribute(
-						"data-status",
-						event.type === "load" ? "ready" : "error"
+						'data-status',
+						event.type === 'load' ? 'ready' : 'error'
 					);
 				};
-				script.addEventListener("load", setAttributeFromEvent);
-				script.addEventListener("error", setAttributeFromEvent);
-			} else {
-				// Grab existing script status from attribute and set to state.
-				setStatus(script.getAttribute("data-status"));
+				script.addEventListener('load', setStatus);
+				script.addEventListener('error', setStatus);
+				document.body.appendChild(script);
 			}
-			// Script event handler to update status in state
-			// Note: Even if the script already exists we still need to add
-			// event handlers to update the state for *this* hook instance.
-			const setStateFromEvent = event => {
-				setStatus(event.type === "load" ? "ready" : "error");
+
+			const handleStatusChange = event => {
+				script.setAttribute(
+					'data-status',
+					event.type === 'load' ? 'ready' : 'error'
+				);
+				onStoreChange();
 			};
-			// Add event listeners
-			script.addEventListener("load", setStateFromEvent);
-			script.addEventListener("error", setStateFromEvent);
-			// Remove event listeners on cleanup
+			script.addEventListener('load', handleStatusChange);
+			script.addEventListener('error', handleStatusChange);
 			return () => {
-				if (script) {
-					script.removeEventListener("load", setStateFromEvent);
-					script.removeEventListener("error", setStateFromEvent);
-				}
+				script.removeEventListener('load', handleStatusChange);
+				script.removeEventListener('error', handleStatusChange);
 			};
 		},
-		[src] // Only re-run effect if script src changes
+		[src]
 	);
-	return status;
+
+	const getSnapshot = useCallback(
+		() =>
+			src ? findScript(src)?.getAttribute('data-status') || 'loading' : 'idle',
+		[src]
+	);
+	const getServerSnapshot = useCallback(
+		() => (src ? 'loading' : 'idle'),
+		[src]
+	);
+
+	return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
 
 export default useScript;

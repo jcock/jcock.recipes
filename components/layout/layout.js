@@ -7,16 +7,11 @@ import SkipLink from '~/components/modules/navigation/skip-link';
 import Header from '~/components/layout/header';
 import Footer from '~/components/layout/footer';
 
-const RootLayout = ({
-	children
-}) => {
+const RootLayout = ({ children }) => {
 	const [currentSection, setCurrentSection] = useState(null);
 
 	return (
-		<div
-			id="top"
-			className="relative flex flex-col min-h-screen"
-		>
+		<div id="top" className="relative flex flex-col min-h-screen">
 			<Provider>
 				<SectionContext.Provider
 					value={{
@@ -27,9 +22,7 @@ const RootLayout = ({
 					<SkipLink />
 					<Header />
 
-					<main id="start-of-content">
-						{children}
-					</main>
+					<main id="start-of-content">{children}</main>
 
 					<Footer />
 				</SectionContext.Provider>

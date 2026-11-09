@@ -57,9 +57,15 @@ Run the project in development mode ([http://localhost:3000](http://localhost:30
 npm run dev
 ```
 
+This site uses the Pages Router with a custom Nextra theme. Keep Next.js on v15,
+Nextra on v3, and Tailwind CSS on v3; upgrading those major versions requires
+migrating the router, theme integration, and styles. The package manifest and
+lockfile use compatible versions of these packages and the lint tooling.
+
 ### Lint
 
 - `npm run lint` - Run ESLint
+- `npm run lint:fix` - Apply automatic ESLint and formatting fixes
 
 ### Build your site for production
 

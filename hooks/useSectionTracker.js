@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useRef, useEffect } from 'react';
 import trackEvent from '~/hooks/useEventTracker';
 
 import { SectionContext } from '~/components/modules/sections/sectionContext';
@@ -14,7 +14,9 @@ const useSectionTracker = () => {
 
 	const [lastSection, setLastSection] = useState('');
 	const [sections, setSections] = useState([]);
-	let timeout = null;
+	const timeout = useRef(null);
+
+	useEffect(() => () => clearTimeout(timeout.current), []);
 
 	// Allows a blank hash or ensures there is a # in the hash and replaces current state
 	const setHash = hash => {
@@ -54,7 +56,11 @@ const useSectionTracker = () => {
 		// Otherwise, add the section to the list
 		if (!found) {
 			setSections(sections => {
-				sections.push({ id, threshold: newThreshold, active: newThreshold < RATIO ? false : true });
+				sections.push({
+					id,
+					threshold: newThreshold,
+					active: newThreshold < RATIO ? false : true
+				});
 				return sections;
 			});
 		}
@@ -62,9 +68,9 @@ const useSectionTracker = () => {
 		let maxThreshold = 0;
 		let sectionId = '';
 
-		clearTimeout(timeout);
+		clearTimeout(timeout.current);
 
-		timeout = setTimeout(() => {
+		timeout.current = setTimeout(() => {
 			// Find the section with the largest threshold
 			sections.forEach(section => {
 				if (section.active && section.threshold > maxThreshold) {
@@ -78,7 +84,7 @@ const useSectionTracker = () => {
 				setHash(ignore.some(id => id === sectionId) ? ' ' : sectionId);
 				trackEvent('Engagement', 'View Section', sectionId);
 				setCurrentSection(sectionId);
-			// } else {
+				// } else {
 			} else if (isBrowser && window.scrollY < 100) {
 				setCurrentSection(' ');
 				setHash(' ');

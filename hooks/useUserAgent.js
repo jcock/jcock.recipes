@@ -1,43 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useMemo, useSyncExternalStore } from 'react';
 import UAParser from 'ua-parser-js';
 
-const isBrowser = () => typeof window !== 'undefined';
+const subscribe = () => () => {};
+const getSnapshot = () => window.navigator.userAgent;
+const getServerSnapshot = () => null;
 
 const useUserAgent = () => {
-	const [state, setState] = useState(null);
+	const userAgent = useSyncExternalStore(
+		subscribe,
+		getSnapshot,
+		getServerSnapshot
+	);
 
-	useEffect(() => {
-		if (!isBrowser) {
-			return null;
-		}
-
-		let didRun = true;
+	return useMemo(() => {
+		if (userAgent === null) return null;
 
 		try {
 			const uaParser = new UAParser.UAParser();
-			uaParser.setUA(window.navigator.userAgent);
-			const payload = {
+			uaParser.setUA(userAgent);
+			return {
 				os: uaParser.getOS(),
 				browser: uaParser.getBrowser(),
 				cpu: uaParser.getCPU(),
 				device: uaParser.getDevice(),
 				engine: uaParser.getEngine()
 			};
-			if (didRun) {
-				setState(payload);
-			}
-		} catch (err) {
-			if (didRun) {
-				setState(null);
-			}
+		} catch {
+			return null;
 		}
-
-		return () => {
-			didRun = false;
-		};
-	}, []);
-
-	return state;
+	}, [userAgent]);
 };
 
 export default useUserAgent;

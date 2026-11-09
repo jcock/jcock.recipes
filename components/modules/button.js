@@ -8,8 +8,10 @@ import Icon from '~/components/modules/icon';
 // Notes:
 // Button with a variant of 'link' should not contain a <Button.Body>.
 
-const linkDefaultClasses = "normal-case text-inherit !font-[inherit] [font-weight:inherit] !p-0 rounded-none";
-const underlineClasses = "!underline decoration-1 underline-offset-2 hover:!no-underline focus:!no-underline";
+const linkDefaultClasses =
+	'normal-case text-inherit !font-[inherit] [font-weight:inherit] !p-0 rounded-none';
+const underlineClasses =
+	'!underline decoration-1 underline-offset-2 hover:!no-underline focus:!no-underline';
 
 const ButtonVariant = {
 	none: '',
@@ -34,21 +36,22 @@ const ButtonDefaults = {
 
 const linkVariants = variant => variant === 'link';
 
-const buttonClasses = (variant, size, isBlock, hasUnderline, className) => twMerge(
-	isBlock ? ButtonDefaults.block : linkVariants(variant) ? 'inline' : 'inline-block',
-	ButtonDefaults.style,
-	variant ? ButtonVariant[variant] : ButtonDefaults.variant,
-	size ? ButtonSize[size] : ButtonDefaults.size,
-	hasUnderline ? underlineClasses : '',
-	className ?? ''
-);
-
-const Button = ({
-	children
-}) => {
-	return (
-		{ children }
+const buttonClasses = (variant, size, isBlock, hasUnderline, className) =>
+	twMerge(
+		isBlock
+			? ButtonDefaults.block
+			: linkVariants(variant)
+				? 'inline'
+				: 'inline-block',
+		ButtonDefaults.style,
+		variant ? ButtonVariant[variant] : ButtonDefaults.variant,
+		size ? ButtonSize[size] : ButtonDefaults.size,
+		hasUnderline ? underlineClasses : '',
+		className ?? ''
 	);
+
+const Button = ({ children }) => {
+	return { children };
 };
 
 export const Anchor = ({
@@ -171,32 +174,21 @@ export const Btn = forwardRef((props, ref) => {
 	);
 });
 
-export const ButtonBody = ({
-	children,
-	className
-}) => {
+export const ButtonBody = ({ children, className }) => {
 	return (
-		<span className={`
+		<span
+			className={`
 			inline-flex w-full items-center justify-between gap-1.5
 			${className ?? ''}
-		`}>
+		`}
+		>
 			{children}
 		</span>
 	);
 };
 
-export const ButtonIcon = ({
-	icon,
-	size = 'w-4 h-4',
-	className
-}) => {
-	return (
-		<Icon
-			icon={icon}
-			size={size}
-			className={className ?? ''}
-		/>
-	);
+export const ButtonIcon = ({ icon, size = 'w-4 h-4', className }) => {
+	return <Icon icon={icon} size={size} className={className ?? ''} />;
 };
 
 Button.Anchor = Anchor;

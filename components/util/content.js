@@ -1,10 +1,6 @@
 import React from 'react';
 
-const Content = ({
-	as = 'div',
-	className,
-	children
-}) => {
+const Content = ({ as = 'div', className, children }) => {
 	const Container = as;
 
 	return (

@@ -17,8 +17,23 @@ const Grid = forwardRef((props, ref) => {
 
 	const Container = as;
 
-	return (
-		noAnimation ?
+	return noAnimation ? (
+		<Container
+			ref={ref}
+			className={twMerge(
+				'grid',
+				gap,
+				autoRows ? 'auto-rows-min' : '',
+				'grid-cols-1',
+				columns,
+				className ?? ''
+			)}
+			{...rest}
+		>
+			{children}
+		</Container>
+	) : (
+		<SlideIn>
 			<Container
 				ref={ref}
 				className={twMerge(
@@ -33,40 +48,14 @@ const Grid = forwardRef((props, ref) => {
 			>
 				{children}
 			</Container>
-			:
-			<SlideIn>
-				<Container
-					ref={ref}
-					className={twMerge(
-						'grid',
-						gap,
-						autoRows ? 'auto-rows-min' : '',
-						'grid-cols-1',
-						columns,
-						className ?? ''
-					)}
-					{...rest}
-				>
-					{children}
-				</Container>
-			</SlideIn>
+		</SlideIn>
 	);
 });
 
-export const GridItem = ({
-	as = 'div',
-	children,
-	className
-}) => {
+export const GridItem = ({ as = 'div', children, className }) => {
 	const Container = as;
 
-	return (
-		<Container
-			className={className ?? ''}
-		>
-			{children}
-		</Container>
-	);
+	return <Container className={className ?? ''}>{children}</Container>;
 };
 
 Grid.Item = GridItem;

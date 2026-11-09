@@ -2,12 +2,6 @@
 
 import { Provider as RWBProvider } from 'react-wrap-balancer';
 
-export function Provider({
-	children
-}) {
-	return (
-		<RWBProvider>
-			{children}
-		</RWBProvider>
-	);
+export function Provider({ children }) {
+	return <RWBProvider>{children}</RWBProvider>;
 }

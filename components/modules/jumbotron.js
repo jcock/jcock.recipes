@@ -1,12 +1,6 @@
 import Image from 'next/image';
 
-const Jumbotron = ({
-	className,
-	contentClasses,
-	image,
-	children,
-	...rest
-}) => {
+const Jumbotron = ({ className, contentClasses, image, children, ...rest }) => {
 	return (
 		<section
 			className={`
@@ -29,10 +23,7 @@ const Jumbotron = ({
 	);
 };
 
-export const JumbotronTitle = ({
-	className,
-	children
-}) => {
+export const JumbotronTitle = ({ className, children }) => {
 	return (
 		<h1
 			className={`
@@ -45,11 +36,7 @@ export const JumbotronTitle = ({
 	);
 };
 
-export const JumbotronImage = ({
-	image,
-	alt,
-	className
-}) => {
+export const JumbotronImage = ({ image, alt, className }) => {
 	return (
 		<div className="relative order-last row-span-full col-span-full">
 			<Image

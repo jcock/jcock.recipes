@@ -20,7 +20,7 @@ const RecipeTypes = [
 			background: 'bg-pink-400',
 			hover: 'data-[highlighted]:bg-pink-400',
 			selected: {
-				color:  'text-pink-400',
+				color: 'text-pink-400',
 				background: 'data-[state=checked]:bg-pink-400'
 			}
 		}
@@ -33,7 +33,7 @@ const RecipeTypes = [
 			background: 'bg-orange-400',
 			hover: 'data-[highlighted]:bg-orange-400',
 			selected: {
-				color:  'text-orange-400',
+				color: 'text-orange-400',
 				background: 'data-[state=checked]:bg-orange-400'
 			}
 		}
@@ -46,7 +46,7 @@ const RecipeTypes = [
 			background: 'bg-blue-400',
 			hover: 'data-[highlighted]:bg-blue-400',
 			selected: {
-				color:  'text-blue-400',
+				color: 'text-blue-400',
 				background: 'data-[state=checked]:bg-blue-400'
 			}
 		}
@@ -59,7 +59,7 @@ const RecipeTypes = [
 			background: 'bg-gray-500',
 			hover: 'data-[highlighted]:bg-gray-500',
 			selected: {
-				color:  'text-gray-500',
+				color: 'text-gray-500',
 				background: 'data-[state=checked]:bg-gray-500'
 			}
 		}
@@ -72,7 +72,7 @@ const RecipeTypes = [
 			background: 'bg-purple-400',
 			hover: 'data-[highlighted]:bg-purple-400',
 			selected: {
-				color:  'text-purple-400',
+				color: 'text-purple-400',
 				background: 'data-[state=checked]:bg-purple-400'
 			}
 		}
@@ -85,7 +85,7 @@ const RecipeTypes = [
 			background: 'bg-yellow-400',
 			hover: 'data-[highlighted]:bg-yellow-400',
 			selected: {
-				color:  'text-yellow-400',
+				color: 'text-yellow-400',
 				background: 'data-[state=checked]:bg-yellow-400'
 			}
 		}

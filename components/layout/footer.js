@@ -12,20 +12,20 @@ const Footer = ({ className }) => {
 		>
 			<div className="container flex justify-between items-center">
 				<p className="m-0">
-					© {new Date().getFullYear()}. <Button.Anchor href={`${site.copyright.url}`} variant="link" hasUnderline>{site.copyright.name}</Button.Anchor>
+					© {new Date().getFullYear()}.{' '}
+					<Button.Anchor
+						href={`${site.copyright.url}`}
+						variant="link"
+						hasUnderline
+					>
+						{site.copyright.name}
+					</Button.Anchor>
 				</p>
 
 				<div className="flex">
-					<Button.Scroll
-						href="top"
-						variant="none"
-						size="sq"
-					>
+					<Button.Scroll href="top" variant="none" size="sq">
 						<span className="sr-only">To the top!</span>
-						<Button.Icon
-							icon="mdi:arrow-collapse-up"
-							size="w-4 h-4"
-						/>
+						<Button.Icon icon="mdi:arrow-collapse-up" size="w-4 h-4" />
 					</Button.Scroll>
 				</div>
 			</div>
