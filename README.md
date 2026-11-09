@@ -70,6 +70,18 @@ lockfile use compatible versions of these packages and the lint tooling.
 - `npm run lint` - Run ESLint
 - `npm run lint:fix` - Apply automatic ESLint and formatting fixes
 
+### Favicons and SVGs
+
+`npm run generate-favicons` generates the PNG/ICO icons and web app manifest in
+`public/` from the logo configured in `data/site.json`. It also runs automatically
+before `npm run dev` and `npm run build`, including Netlify builds. Generated
+files are ignored by Git; the editable `public/favicon.svg` is preserved.
+
+Import an SVG as a React component with `import Logo from '~/images/logo.svg'`.
+For a static image import to use with `next/image`, append `?url`:
+`import logo from '~/images/logo.svg?url'`. This project uses the Webpack SVGR
+pipeline required by its Nextra integration.
+
 ### Build your site for production
 
 ```sh

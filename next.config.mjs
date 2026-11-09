@@ -1,10 +1,9 @@
-import { readFileSync } from 'node:fs';
 import nextra from 'nextra';
-import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 
-const site = JSON.parse(
-	readFileSync(new URL('./data/site.json', import.meta.url), 'utf8')
-);
+const svgAsComponentRule = {
+	loader: '@svgr/webpack',
+	options: { dimensions: false }
+};
 
 const withNextra = nextra({
 	theme: './components/layout/recipe-layout.js'
@@ -13,6 +12,8 @@ const withNextra = nextra({
 const nextConfig = {
 	reactStrictMode: true,
 	images: {
+		deviceSizes: [640, 750, 1080, 1920, 2048, 3840],
+		qualities: [25, 50, 75, 90, 100],
 		remotePatterns: [
 			{
 				protocol: 'https',
@@ -21,44 +22,15 @@ const nextConfig = {
 		]
 	},
 	webpack(config) {
-		config.plugins.push(
-			new FaviconsWebpackPlugin({
-				logo: `public/${site.logo}`,
-				outputPath: './',
-				inject: false,
-				favicons: {
-					appName: site.title,
-					appShortName: site.titleShort,
-					appDescription: site.description,
-					developerName: site.author,
-					display: 'browser',
-					background: site.colors.manifest.backgroundColor,
-					theme_color: site.colors.manifest.themeColor,
-					icons: {
-						android: [
-							'android-chrome-192x192.png',
-							'android-chrome-512x512.png'
-						],
-						appleIcon: ['apple-touch-icon-180x180.png', 'apple-touch-icon.png'],
-						appleStartup: false,
-						favicons: [
-							'favicon-16x16.png',
-							'favicon-32x32.png',
-							'favicon-48x48.png',
-							'favicon.ico',
-							'favicon.svg'
-						],
-						windows: false,
-						yandex: false
-					}
-				}
-			})
-		);
-
 		// Grab the existing rule that handles SVG imports
 		const fileLoaderRule = config.module.rules.find(rule =>
 			rule.test?.test?.('.svg')
 		);
+		if (!fileLoaderRule) {
+			throw new Error(
+				'Could not find the Next.js image loader for SVG imports.'
+			);
+		}
 
 		config.module.rules.push(
 			// Reapply the existing rule, but only for svg imports ending in ?url
@@ -70,16 +42,11 @@ const nextConfig = {
 			// Convert all other *.svg imports to React components
 			{
 				test: /\.svg$/i,
-				issuer: /\.[jt]sx?$/,
-				resourceQuery: { not: /url/ }, // exclude if *.svg?url
-				use: [
-					{
-						loader: '@svgr/webpack',
-						options: {
-							dimensions: false
-						}
-					}
-				]
+				issuer: fileLoaderRule.issuer,
+				resourceQuery: {
+					not: [...(fileLoaderRule.resourceQuery?.not ?? []), /url/]
+				},
+				use: [svgAsComponentRule]
 			}
 		);
 
