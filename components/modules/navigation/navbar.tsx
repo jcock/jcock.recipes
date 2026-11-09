@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { ChefHatIcon } from '@phosphor-icons/react/ssr';
-import ViewMode from './view-mode';
 import site from '~/data/site.json';
 
 export default function Navbar() {
@@ -21,7 +20,6 @@ export default function Navbar() {
 					/>
 					<span>{site.title}</span>
 				</Link>
-				<ViewMode />
 			</div>
 		</nav>
 	);

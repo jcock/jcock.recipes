@@ -2,24 +2,12 @@
 
 import { useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
-import { MoonIcon, SunIcon, MonitorIcon } from '@phosphor-icons/react';
-import {
-	Select,
-	SelectContent,
-	SelectGroup,
-	SelectItem,
-	SelectTrigger,
-	SelectValue
-} from '~/components/modules/core/select';
+import { MoonIcon, SunIcon } from '@phosphor-icons/react';
+import { Button } from '~/components/modules/core/button';
 
 const subscribe = () => () => {};
 const getSnapshot = () => true;
 const getServerSnapshot = () => false;
-const themes = [
-	{ value: 'light', label: 'Light' },
-	{ value: 'dark', label: 'Dark' },
-	{ value: 'system', label: 'System' }
-];
 
 export default function ViewMode() {
 	const mounted = useSyncExternalStore(
@@ -27,39 +15,21 @@ export default function ViewMode() {
 		getSnapshot,
 		getServerSnapshot
 	);
-	const { theme, setTheme } = useTheme();
-	const selected = mounted ? (theme ?? 'system') : 'system';
-	const ThemeIcon =
-		selected === 'dark'
-			? MoonIcon
-			: selected === 'light'
-				? SunIcon
-				: MonitorIcon;
+	const { resolvedTheme, setTheme } = useTheme();
+	const isDark = mounted && resolvedTheme === 'dark';
+	const ThemeIcon = isDark ? MoonIcon : SunIcon;
+	const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
 	return (
-		<Select
-			items={themes}
-			value={selected}
-			onValueChange={value => {
-				if (value) setTheme(value);
-			}}
+		<Button
+			type="button"
+			variant="ghost"
+			size="icon-sm"
+			aria-label={label}
+			title={label}
+			disabled={!mounted}
+			onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
 		>
-			<SelectTrigger
-				variant="theme"
-				aria-label="Color theme"
-				disabled={!mounted}
-			>
-				<ThemeIcon aria-hidden="true" />
-				<SelectValue />
-			</SelectTrigger>
-			<SelectContent align="end" alignItemWithTrigger={false}>
-				<SelectGroup>
-					{themes.map(item => (
-						<SelectItem key={item.value} value={item.value}>
-							{item.label}
-						</SelectItem>
-					))}
-				</SelectGroup>
-			</SelectContent>
-		</Select>
+			<ThemeIcon aria-hidden="true" />
+		</Button>
 	);
 }

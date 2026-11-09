@@ -82,8 +82,8 @@ and image are optional. The original 22 recipe URLs are covered by regression
 checks; new recipes can be added without changing those checks.
 
 Category filters use shareable URLs such as `/?type=meal` and support browser
-back/forward navigation. The header theme selector follows the system by default
-and remembers an explicit Light/Dark/System choice.
+back/forward navigation. The footer theme toggle follows the system by default
+and remembers an explicit light/dark choice after clicking it.
 
 ## Styling and components
 

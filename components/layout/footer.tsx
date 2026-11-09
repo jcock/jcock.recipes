@@ -1,6 +1,6 @@
 import { ArrowLineUpIcon } from '@phosphor-icons/react/ssr';
-import { Button } from '~/components/modules/core/button';
 import { buttonVariantsCn } from '~/components/modules/core/button-variants';
+import ViewMode from '~/components/modules/navigation/view-mode';
 import site from '~/data/site.json';
 
 export default function Footer() {
@@ -18,15 +18,16 @@ export default function Footer() {
 						{site.copyright.name}
 					</a>
 				</p>
-				<Button
-					render={<a href="#top" />}
-					nativeButton={false}
-					variant="ghost"
-					size="icon-sm"
-					aria-label="To the top"
-				>
-					<ArrowLineUpIcon aria-hidden="true" />
-				</Button>
+				<div className="flex shrink-0 items-center gap-1">
+					<ViewMode />
+					<a
+						href="#top"
+						className={buttonVariantsCn({ variant: 'ghost', size: 'icon-sm' })}
+						aria-label="To the top"
+					>
+						<ArrowLineUpIcon aria-hidden="true" />
+					</a>
+				</div>
 			</div>
 		</footer>
 	);
