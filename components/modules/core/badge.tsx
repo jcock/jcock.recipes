@@ -10,12 +10,15 @@ const badgeVariants = cva(
 	{
 		variants: {
 			variant: {
-				dessert: 'bg-recipe-dessert text-white/80',
-				drink: 'bg-recipe-drink text-white/80',
-				meal: 'bg-recipe-meal text-white/80',
-				misc: 'bg-recipe-misc text-white/80',
-				side: 'bg-recipe-side text-white/80',
-				snack: 'bg-recipe-snack text-white/80',
+				dessert:
+					'bg-recipe-dessert text-[contrast-color(var(--color-recipe-dessert))]',
+				drink:
+					'bg-recipe-drink text-[contrast-color(var(--color-recipe-drink))]',
+				meal: 'bg-recipe-meal text-[contrast-color(var(--color-recipe-meal))]',
+				misc: 'bg-recipe-misc text-[contrast-color(var(--color-recipe-misc))]',
+				side: 'bg-recipe-side text-[contrast-color(var(--color-recipe-side))]',
+				snack:
+					'bg-recipe-snack text-[contrast-color(var(--color-recipe-snack))]',
 				default: 'bg-primary text-primary-foreground [a]:hover:bg-primary/80',
 				secondary:
 					'bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80',
